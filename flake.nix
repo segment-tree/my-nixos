@@ -6,10 +6,11 @@
     #     github:owner/name/reference
     # 即 github 仓库地址 + branch/commit-id/tag
     # NixOS 官方软件源，这里使用 nixos-unstable 分支
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # home-manager，用于管理用户配置
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/master";
+      # url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";

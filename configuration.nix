@@ -51,12 +51,12 @@
     # need to configue GnomeSettings-Keyboard-Input to activate ibus
   };
   fonts = {
-        enableDefaultFonts = true;
+        enableDefaultPackages = true;
         fontconfig.enable = true;
         fontDir.enable = true;
         enableGhostscriptFonts = true;
         # default font name : monospace
-        fonts = with pkgs; [
+        packages = with pkgs; [
             noto-fonts
             source-han-sans
             noto-fonts-cjk
@@ -115,7 +115,7 @@
      neofetch
      openssh
      htop
-     clash
+     clash-meta
   ];
    
 
