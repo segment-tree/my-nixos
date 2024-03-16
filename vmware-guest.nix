@@ -1,3 +1,4 @@
+#Abandoned
 #almost copy from /nix/var/nix/profiles/per-user/root/channels/nixos/nixos/modules/virtualisation/vmware-guest.nix
 #refer to https://github.com/NixOS/nixpkgs/pull/242126/commits/1e16a937ca4c148841c15760ddc02f47ce487735 and https://github.com/NixOS/nixpkgs/issues/147650
 

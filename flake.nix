@@ -46,6 +46,7 @@
           home-manager.extraSpecialArgs = inputs;
         }
       ];
+      # { _module.args = { inherit inputs; };}
       # modules end
     };
   };

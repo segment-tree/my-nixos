@@ -1,3 +1,4 @@
+#Abandoned
 {pkgs, ...}:
 {
   home.packages = [pkgs.bubblewrap];
@@ -19,14 +20,16 @@
           # nix-shell -p util-linux --run "mount -t overlay overlay -o lowerdir=$HOME,upperdir=$HOME/.var/app/$a/data,workdir=$HOME/.var/app/$a/tmp $HOME"
           #nix shell nixpkgs#util-linux -c \
           PATH=${"\${PATH//\\/run\\/wrappers\\/bin\\:} "} # trick
-          mount -t overlay overlay -o lowerdir=$HOME,upperdir=$HOME/.var/app/$a/data,workdir=$HOME/.var/app/$a/tmp $HOME
+          local mntdir=/mnt
+          mount -t overlay overlay -o lowerdir=$HOME,upperdir=$HOME/.var/app/$a/data,workdir=$HOME/.var/app/$a/tmp $mntdir
           # mount --bind /run/current-system/sw/bin /run/wrappers/bin/ # remove
           # see https://github.com/NixOS/nixpkgs/pull/206658
           # https://github.com/NixOS/nixpkgs/issues/42117
           cd /
           hostname virt
           # exec unshare --pid --user --mount-proc --mount --fork bash
-          exec bwrap --dev-bind / / --unshare-user --uid 1000 --gid 1000 bash
+          local directbd="$HOME/.config/ibus $HOME/.config/ibus"
+          exec bwrap --dev-bind / / --bind $mntdir $HOME --bind $directbd --unshare-user --uid 1000 --gid 1000 bash
       }
     '';
   };

@@ -5,7 +5,7 @@
   home.homeDirectory = "/home/me";
   
   imports = [
-    ./tools/sandhome.nix
+    ./tools/vhome.nix
     ./tools/fhs.nix
     nur.hmModules.nur
   ];

@@ -20,7 +20,7 @@ function vhome_work(){
     # see https://github.com/NixOS/nixpkgs/pull/206658
     # https://github.com/NixOS/nixpkgs/issues/42117
     cd /
-    hostname virt
+    hostname virt-$a
     # exec unshare --pid --user --mount-proc --mount --fork bash
     local directbd="$HOME/.config/ibus $HOME/.config/ibus"
     exec bwrap --dev-bind / / --bind $mntdir $HOME --bind $directbd --unshare-user --uid 1000 --gid 1000 bash

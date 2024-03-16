@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./vmware-guest.nix
+      # ./vmware-guest.nix
     ];#core display network
 
   # Use the systemd-boot EFI boot loader.
@@ -27,7 +27,7 @@
     waydroid.enable = true;
     lxd.enable = true;
   };
-  nixpkgs.config.firefox.enableGnomeExtensions = true;
+  # nixpkgs.config.firefox.enableGnomeExtensions = true; # not well
   services.gnome.gnome-browser-connector.enable = true;
   #####
 
