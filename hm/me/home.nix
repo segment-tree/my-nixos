@@ -35,6 +35,7 @@
   # 通过 home.packages 安装一些常用的软件
   home.packages = with pkgs;[
     fortune
+    just
     # cpeditor
     # firefox-wayland
   ];
@@ -61,6 +62,7 @@
       };
       extensions = with config.nur.repos.rycee.firefox-addons;[
         ublock-origin
+        tampermonkey
       ];
     };
   };

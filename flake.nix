@@ -7,6 +7,9 @@
     # 即 github 仓库地址 + branch/commit-id/tag
     # NixOS 官方软件源，这里使用 nixos-unstable 分支
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "https://mirrors.ustc.edu.cn/nix-channels/nixos-unstable/nixexprs.tar.xz"
+        # see https://nixos-cn.org/tutorials/installation/Networking.html
+    
     # home-manager，用于管理用户配置
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -14,6 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
+    
   };
   
   outputs = { self, nixpkgs, home-manager, nur, ... }@inputs: {

@@ -8,6 +8,10 @@ function vhome_work(){
         return
     fi
     local a=$1
+    if [ "$a" == "" ]; then
+        a="test"
+    fi
+    
     mkdir -p "$HOME/.var/app/$a/data/.inbox"
     # ln -s $HOME/Public $HOME/.var/app/$a/data/Public
     mkdir -p "$HOME/.var/app/$a/tmp"
@@ -19,9 +23,17 @@ function vhome_work(){
     # mount --bind /run/current-system/sw/bin /run/wrappers/bin/ # remove
     # see https://github.com/NixOS/nixpkgs/pull/206658
     # https://github.com/NixOS/nixpkgs/issues/42117
+    
     cd /
     hostname virt-$a
     # exec unshare --pid --user --mount-proc --mount --fork bash
-    local directbd="$HOME/.config/ibus $HOME/.config/ibus"
-    exec bwrap --dev-bind / / --bind $mntdir $HOME --bind $directbd --unshare-user --uid 1000 --gid 1000 bash
+    local dirbd="\
+        --bind $HOME/.config/ibus $HOME/.config/ibus \
+        --bind $HOME/Public $HOME/Public"
+    local dirro="\
+        --ro-bind $HOME/.mozilla $HOME/.mozilla"
+    
+    exec bwrap --dev-bind / / --bind $mntdir $HOME \
+        $dirbd  $dirro \
+        --unshare-user --uid 1000 --gid 1000 bash
 }

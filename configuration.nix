@@ -20,7 +20,7 @@
   # boot.kernelPackages= pkgs.linuxPackages_zen;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
-  # nix.settings.substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"  "https://cache.nixos.org/" ];
+  nix.settings.substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"  "https://cache.nixos.org/" ];dsssss
   virtualisation = {
     vmware.guest.enable = true;
     vmware.guest.headless = true;#
