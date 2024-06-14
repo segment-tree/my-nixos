@@ -38,10 +38,8 @@ gc:
   sudo nix store gc --debug
   sudo nix-collect-garbage --delete-old
 
-set positional-arguments
-
-@gitSubmit:
+gitSubmit:
   git add .
-  git commit -m $0
+  git commit
 
 
