@@ -7,4 +7,5 @@
       ../../system
     ];
     #custom settings are here:
+    networking.hostName = "nixVM";
 }
