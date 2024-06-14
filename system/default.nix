@@ -5,10 +5,7 @@
 { config, pkgs, pkgs-stable, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];#core display network
+  #core display network
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

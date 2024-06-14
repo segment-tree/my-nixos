@@ -21,25 +21,25 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
   };
   
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem rec {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  let
+    mkArgs = { inputs, system, ... }: {
+      pkgs-stable = import inputs.nixpkgs-stable {
+      inherit system;# 这里递归引用了外部的 system 属性
+      config.allowUnfree = true;
+      };
+      inherit inputs;
+    };
+  in {
+    nixosConfigurations."nixVM" = nixpkgs.lib.nixosSystem rec {
     # hostname 为 nixos 的主机会使用这个配置
     # 这里使用了 nixpkgs.lib.nixosSystem 函数来构建配置，
     # 后面的 attributes set 是它的参数，在 nixos 系统上使用如下命令即可部署此配置：
     #     nixos-rebuild switch --flake .#nixos-test
       system = "aarch64-linux"; # pkgs.stdenv.hostPlatform.system;
-      specialArgs = {  # 将 inputs 中的参数传入所有子模块
-        pkgs-stable = import inputs.nixpkgs-stable {
-          # 这里递归引用了外部的 system 属性
-          inherit system;
-          # 为了拉取 chrome 等软件包，
-          # 这里我们需要允许安装非自由软件
-          config.allowUnfree = true;
-        };
-        inherit inputs;
-      };
+      specialArgs = mkArgs{inputs=inputs;system=system;};
       modules = [
-        ./configuration.nix
+        ./machines/nixVM
         # nur.nixosModules.nur
         # { nixpkgs.overlays = [ nur.overlay ]; }
         ./hm
@@ -48,6 +48,16 @@
       # modules end
     };
     
+    nixosConfigurations."nixple" = nixpkgs.lib.nixosSystem rec {
+      system = "aarch64-linux";
+      specialArgs = mkArgs{inputs=inputs;system=system;};
+      modules = [
+        ./machines/apple-silicon
+        ./hm
+      ];
+    };
+    
+    # output end
   };
   
 }

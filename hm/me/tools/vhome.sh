@@ -33,7 +33,12 @@ function vhome_work(){
     local dirro="\
         --ro-bind $HOME/.mozilla $HOME/.mozilla"
     
+    local runshell=$SHELL
+    if [ "$2" != "" ]; then
+        runshell="nix shell $2"
+    fi
+    
     exec bwrap --dev-bind / / --bind $mntdir $HOME \
         $dirbd  $dirro \
-        --unshare-user --uid 1000 --gid 1000 bash
+        --unshare-user --uid 1000 --gid 1000 $runshell
 }
