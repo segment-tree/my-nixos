@@ -40,7 +40,7 @@ gc:
 
 set positional-arguments
 
-gitSubmit:
+@gitSubmit:
   git add .
   git commit -m $0
 
