@@ -19,6 +19,8 @@
     nur.url = "github:nix-community/NUR";
     
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    
+    nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
   };
   
   outputs = { self, nixpkgs, home-manager, ... }@inputs:

@@ -35,8 +35,19 @@
      openssh
      htop
      clash-meta
+     gnome-network-displays
   ];
-   
+  
+  ###tmp
+  xdg.portal.enable = true;
+
+  xdg.portal.xdgOpenUsePortal = true;
+  xdg.portal.extraPortals = [
+    #pkgs.xdg-desktop-portal-gtk
+    pkgs.xdg-desktop-portal-gnome
+    pkgs.xdg-desktop-portal-wlr
+  ];
+  ###
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

@@ -9,7 +9,7 @@
     ./tools/fhs.nix
     nur.hmModules.nur
   ];
-
+  
   # 直接将当前文件夹的配置文件，链接到 Home 目录下的指定位置
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
 
@@ -58,7 +58,7 @@
       settings = { # about:config
         "mousewheel.system_scroll_override.enabled" = false;
         "apz.gtk.kinetic_scroll.enabled" = false;
-        "mousewheel.default.delta_multiplier_y" = 80;
+        "mousewheel.default.delta_multiplier_y" = 60;
       };
       extensions = with config.nur.repos.rycee.firefox-addons;[
         ublock-origin
@@ -66,7 +66,19 @@
       ];
     };
   };
+  
+  systemd.user.services.clash-meta = {
+    Unit.Description = "clash vpn service";
+    Install = {
+      WantedBy = [ "default.target" ];
+      After = [ "network.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.clash-meta}/bin/clash-meta";
+    };
+  };
 
+  
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards

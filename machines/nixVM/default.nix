@@ -6,6 +6,13 @@
       ./hardware-configuration.nix
       ../../system
     ];
-    #custom settings are here:
-    networking.hostName = "nixVM";
+  #custom settings are here:
+  networking.hostName = "nixVM";
+  
+  virtualisation = {
+    vmware.guest.enable = true;
+    vmware.guest.headless = true;#
+    waydroid.enable = true;
+    lxd.enable = true;
+  };
 }
