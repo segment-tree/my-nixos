@@ -35,7 +35,9 @@
      openssh
      htop
      clash-meta
+     ##
      gnome-network-displays
+     xdg-dbus-proxy
   ];
   
   ###tmp

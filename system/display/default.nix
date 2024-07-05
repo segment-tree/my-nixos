@@ -52,5 +52,31 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
+  
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      # The name is just the name of the configuration file, it does not really matter
+      default = {
+        ids = [ "*" ]; # what goes into the [id] section, here we select all keyboards
+        # Everything but the ID section:
+        settings = {
+          # The main layer, if you choose to declare it in Nix
+          main = {};
+          otherlayer = {};
+        };
+        extraConfig = ''
+          [main]
+          capslock=layer(mylayer)
+          [mylayer]
+          h=left
+          j=down
+          k=up
+          l=right
+          space=M-S-space
+        '';
+      };
+    };
+  };
+  
 }

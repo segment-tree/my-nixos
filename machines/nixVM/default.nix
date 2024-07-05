@@ -15,4 +15,12 @@
     waydroid.enable = true;
     lxd.enable = true;
   };
+  
+  services.keyd.keyboards.default = {
+    extraConfig = ''
+      [main]
+      leftmeta=layer(control)
+      leftcontrol=layer(meta)
+    '';
+  };
 }

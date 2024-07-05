@@ -1,6 +1,7 @@
 alias prepare_vhome="unshare --pid --uts --user -r --mount-proc --mount --fork bash"
 function vhome(){
-    prepare_vhome -c "source $HOME/.bashrc ; vhome_work $1 $2 $3"
+    # prepare_vhome -c "source $HOME/.bashrc ; vhome_work $1 $2 $3"
+    unshare --pid --uts --user -r --mount-proc --mount --fork bash -c "source $HOME/.bashrc ; vhome_work $1 \"$2\" $3"
 }
 function vhome_work(){
     if [ $UID != 0 ]; then
@@ -35,7 +36,9 @@ function vhome_work(){
     
     local runshell=$SHELL
     if [ "$2" != "" ]; then
-        runshell="nix shell $2"
+        if [ "$3" == "_" ]; then runshell=$2
+        else runshell="nix shell $2"
+        fi
     fi
     
     exec bwrap --dev-bind / / --bind $mntdir $HOME \

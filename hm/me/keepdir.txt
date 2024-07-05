@@ -1,0 +1,16 @@
+~/.config/dconf
+~/.config/gtk-3.0
+~/.config/mihomo
+~/.gitconfig
+~/.mozilla
+~/.var
+~/code
+~/Desktop
+~/Document
+~/Downloads
+~/Music
+~/Picture
+~/Public
+~/Templates
+~/Videos
+

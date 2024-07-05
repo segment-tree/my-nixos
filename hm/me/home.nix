@@ -7,6 +7,9 @@
   imports = [
     ./tools/vhome.nix
     ./tools/fhs.nix
+    ./apps/bookworm.nix
+    ./apps/telegram-desktop.nix
+    ./apps/qq.nix
     nur.hmModules.nur
   ];
   
@@ -42,6 +45,7 @@
   
   dconf.settings = {
     "org/gnome/desktop/interface".scaling-factor = lib.hm.gvariant.mkUint32 2;
+    "org/gnome/SessionManager".auto-save-session = true; # NOT WORK
   };
   
   programs.bash = {
@@ -58,7 +62,8 @@
       settings = { # about:config
         "mousewheel.system_scroll_override.enabled" = false;
         "apz.gtk.kinetic_scroll.enabled" = false;
-        "mousewheel.default.delta_multiplier_y" = 60;
+        "mousewheel.default.delta_multiplier_y" = 50;
+        "mousewheel.default.delta_multiplier_x" = 80;
       };
       extensions = with config.nur.repos.rycee.firefox-addons;[
         ublock-origin
