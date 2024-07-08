@@ -27,8 +27,11 @@
       cp -r ${_app}/share/applications/$dskNM \
          $out/share/applications/$dskNM
       sed -i "s|${_app}|$out|g" $out/share/applications/$dskNM
-      # echo 'SingleMainWindow=true' >> $out/share/applications/$dskNM
       cp -r ${_app}/share/icons $out/share/icons
+      
+      chmod +w $out/share/applications/$dskNM # to avoid topicon
+      echo -e 'SingleMainWindow=true\nX-GNOME-SingleWindow=true' >> $out/share/applications/$dskNM # ^ but not work
+      
       # wrapProgram $out/bin/bookworm --prefix PATH : ${pkgs.lib.makeBinPath packages}
     '')
   ];

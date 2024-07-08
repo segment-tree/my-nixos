@@ -4,6 +4,7 @@
 {
   home.packages = [
     (let
+      _app = pkgs.bookworm;
       packages = with pkgs; [
           bookworm
       ];
@@ -19,16 +20,16 @@
       
       mkdir -p $out/bin/
       echo ". /etc/nixos/hm/me/tools/vhome.sh; \
-          vhome epub ${pkgs.bookworm}/bin/$binNM _" > $out/bin/$appNM
+          vhome epub ${_app}/bin/$binNM _" > $out/bin/$appNM
       chmod +x $out/bin/$appNM
       
       echo $out/bin/$appNM > $out/bin/$binNM
       chmod +x $out/bin/$binNM
       mkdir -p  $out/share/applications/
-      cp -r ${pkgs.bookworm}/share/applications/$dskNM \
+      cp -r ${_app}/share/applications/$dskNM \
          $out/share/applications/$dskNM
       sed -i "s|${_app}|$out|g" $out/share/applications/$dskNM
-      cp -r ${pkgs.bookworm}/share/icons $out/share/icons
+      cp -r ${_app}/share/icons $out/share/icons
       # wrapProgram $out/bin/bookworm --prefix PATH : ${pkgs.lib.makeBinPath packages}
     '')
   ];
