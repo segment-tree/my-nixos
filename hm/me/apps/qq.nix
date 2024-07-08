@@ -1,6 +1,6 @@
 # tencent qq
 # var location : .var/app/qq/data
-{ pkgs, ...}:
+{ pkgs, ... }:
 {
   home.packages = [
     (let

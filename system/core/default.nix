@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-stable, ... }:
+{ config, lib, pkgs, pkgs-stable, inputs, ... }:
 
 {
   # Use the systemd-boot EFI boot loader.
@@ -6,7 +6,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 10;
   
-  #####
   #boot.kernelPackages= pkgs-stable.linuxPackages_zen;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
@@ -21,4 +20,15 @@
       # "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
   };
+  
+ # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.registry.nur.flake = inputs.nur; # not sure
+  nix.channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
+
+  # but NIX_PATH is still used by many useful tools, so we set it to the same value as the one used by this flake.
+  # Make `nix repl '<nixpkgs>'` use the same nixpkgs as the one used by this flake.
+  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
+  # https://github.com/NixOS/nix/issues/9574
+  nix.settings.nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
 }

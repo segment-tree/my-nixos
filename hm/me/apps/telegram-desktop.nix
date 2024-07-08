@@ -1,6 +1,6 @@
 # telegram
 # var location : .var/app/telegram/data
-{ pkgs, ...}:
+{ pkgs, ... }:
 {
   home.packages = [
     (let
