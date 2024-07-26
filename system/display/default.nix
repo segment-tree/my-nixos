@@ -1,10 +1,11 @@
-{ config, pkgs, pkgs-stable, ... }:
+{ config, pkgs, pkgs-stable, lib, ... }:
 
 {
     # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.inputMethod = {
-    enabled = "ibus";
+    enable = true;
+    type = "ibus";
     ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
     # need to configue GnomeSettings-Keyboard-Input to activate ibus
   };
@@ -47,8 +48,8 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  # sound.enable = true;
+  hardware.pulseaudio.enable = lib.mkOverride 10000 true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;

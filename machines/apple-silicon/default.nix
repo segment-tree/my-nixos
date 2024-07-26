@@ -12,6 +12,7 @@
   networking.hostName = "nixple";
   boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
   hardware.asahi = {
+    setupAsahiSound = true;
     peripheralFirmwareDirectory = ./firmware;
     withRust = true;
     # addEdgeKernelConfig = true; # All edge kernel config options are now the default.
