@@ -36,12 +36,12 @@ function vhome_work(){
     
     local runshell=$SHELL
     if [ "$2" != "" ]; then
-        if [ "$3" == "_" ]; then runshell=$2
+        if [ "$3" == "_" ]; then runshell="$2"
         else runshell="nix shell $2"
         fi
     fi
     
     exec bwrap --dev-bind / / --bind $mntdir $HOME \
         $dirbd  $dirro \
-        --unshare-user --uid 1000 --gid 1000 $runshell
+        --unshare-user --uid 1000 --gid 1000 -- $runshell
 }

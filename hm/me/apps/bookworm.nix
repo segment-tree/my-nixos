@@ -20,7 +20,7 @@
       
       mkdir -p $out/bin/
       echo ". /etc/nixos/hm/me/tools/vhome.sh; \
-          vhome epub ${_app}/bin/$binNM _" > $out/bin/$appNM
+          vhome epub \"${_app}/bin/$binNM \$1 \$2 \$3 \" _" > $out/bin/$appNM
       chmod +x $out/bin/$appNM
       
       echo $out/bin/$appNM > $out/bin/$binNM
