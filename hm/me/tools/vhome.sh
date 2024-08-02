@@ -30,7 +30,9 @@ function vhome_work(){
     # exec unshare --pid --user --mount-proc --mount --fork bash
     local dirbd="\
         --bind $HOME/.config/ibus $HOME/.config/ibus \
-        --bind $HOME/Public $HOME/Public"
+        --bind $HOME/.cache/ibus $HOME/.cache/ibus \
+        --bind $HOME/Public $HOME/Public \
+        --bind $HOME/code $HOME/code"
     local dirro="\
         --ro-bind $HOME/.mozilla $HOME/.mozilla"
     

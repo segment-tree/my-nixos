@@ -39,7 +39,7 @@
     # 后面的 attributes set 是它的参数，在 nixos 系统上使用如下命令即可部署此配置：
     #     nixos-rebuild switch --flake .#nixos-test
       system = "aarch64-linux"; # pkgs.stdenv.hostPlatform.system;
-      specialArgs = mkArgs{inputs=inputs;system=system;};
+      specialArgs = mkArgs { inherit inputs system; };
       modules = [
         ./machines/nixVM
         # nur.nixosModules.nur
@@ -52,7 +52,7 @@
     
     nixosConfigurations."nixple" = nixpkgs.lib.nixosSystem rec {
       system = "aarch64-linux";
-      specialArgs = mkArgs{inputs=inputs;system=system;};
+      specialArgs = mkArgs { inherit inputs system; };
       modules = [
         ./machines/apple-silicon
         ./hm

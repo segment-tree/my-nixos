@@ -9,10 +9,8 @@
     ./core
     ./display
     ./network
+    ./apps
   ];
-  # nixpkgs.config.firefox.enableGnomeExtensions = true; # not well
-  services.gnome.gnome-browser-connector.enable = true;
-  #####
   
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.me = {
@@ -26,30 +24,13 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-   environment.systemPackages = with pkgs; [
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     git # flake
-     wget
-     trash-cli
-     neofetch
-     openssh
-     htop
-     clash-meta
-     ##
-     gnome-network-displays
-     xdg-dbus-proxy
+  environment.systemPackages = with pkgs; [
+    # see ./app/default.nix
   ];
   
-  ###tmp
-  xdg.portal.enable = true;
-
-  xdg.portal.xdgOpenUsePortal = true;
-  xdg.portal.extraPortals = [
-    #pkgs.xdg-desktop-portal-gtk
-    pkgs.xdg-desktop-portal-gnome
-    pkgs.xdg-desktop-portal-wlr
-  ];
-  ###
+  # nixpkgs.config.firefox.enableGnomeExtensions = true; # not well
+  services.gnome.gnome-browser-connector.enable = true;
+  #####
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

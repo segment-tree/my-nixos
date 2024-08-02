@@ -49,7 +49,7 @@
 
   # Enable sound.
   # sound.enable = true;
-  hardware.pulseaudio.enable = lib.mkOverride 10000 true;
+  hardware.pulseaudio.enable = lib.mkDefault true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
