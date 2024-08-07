@@ -4,10 +4,11 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../system
+      # ../../system
     ];
   #custom settings are here:
-  networking.hostName = "nixVM";
+  mine.machine.name = "nixple";
+  mine.machine.isVM = true;
   
   virtualisation = {
     vmware.guest.enable = true;

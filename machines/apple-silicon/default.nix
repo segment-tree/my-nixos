@@ -6,10 +6,10 @@
       #./apple-silicon-support
       inputs.nixos-apple-silicon.nixosModules.apple-silicon-support
       ./hardware-configuration.nix
-      ../../system
+      # ../../system
     ];
   #custom settings are here:
-  networking.hostName = "nixple";
+  mine.machine.name = "nixple";
   boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
   hardware.asahi = {
     setupAsahiSound = true;

@@ -1,8 +1,9 @@
 # bookworm a epub & pdf reader
 # var location : .var/app/epub/data
-{pkgs, ...}:
+# support argument inputs
+{ pkgs, osConfig, lib, ... }:
 {
-  home.packages = [
+  home.packages = lib.mkIf (!osConfig.mine.machine.isVM)  [
     (let
       _app = pkgs.bookworm;
       packages = with pkgs; [
@@ -21,6 +22,7 @@
       mkdir -p $out/bin/
       echo ". /etc/nixos/hm/me/tools/vhome.sh; \
           vhome epub \"${_app}/bin/$binNM \$1 \$2 \$3 \" _" > $out/bin/$appNM
+      # argument
       chmod +x $out/bin/$appNM
       
       echo $out/bin/$appNM > $out/bin/$binNM

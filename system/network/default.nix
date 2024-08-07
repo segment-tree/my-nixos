@@ -1,7 +1,7 @@
 { config, pkgs, pkgs-stable, ... }:
 
 {
-  # ! networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = config.mine.machine.name; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.wireless.iwd = {  # Enables wireless support via wpa_supplicant.
