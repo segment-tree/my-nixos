@@ -17,7 +17,7 @@
     withRust = true;
     # addEdgeKernelConfig = true; # All edge kernel config options are now the default.
     useExperimentalGPUDriver = true;
-    experimentalGPUInstallMode = "overlay";
+    experimentalGPUInstallMode = "driver";
   };
   hardware.graphics.enable = true;
   hardware.graphics.package = lib.mkForce pkgs.mesa-asahi-edge.drivers;###

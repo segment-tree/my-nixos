@@ -3,6 +3,7 @@
 # support argument inputs
 { pkgs, osConfig, lib, ... }:
 {
+  # refer https://github.com/nix-community/home-manager/issues/393
   home.packages = lib.mkIf (!osConfig.mine.machine.isVM)  [
     (let
       _app = pkgs.bookworm;
