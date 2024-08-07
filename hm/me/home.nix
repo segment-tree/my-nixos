@@ -50,7 +50,10 @@
   };
   
   programs.bash = {
-    bashrcExtra = "#test";
+    bashrcExtra = ''
+      alias hsc='_hsc(){ ghc -no-keep-hi-files -no-keep-o-files "$@";}; _hsc'
+      #^ is temp
+    '';
     enable = true;
     enableCompletion = true;
   };
@@ -69,6 +72,8 @@
       extensions = with config.nur.repos.rycee.firefox-addons;[
         ublock-origin
         tampermonkey
+        single-file
+        zoom-page-we
       ];
     };
   };

@@ -27,8 +27,8 @@
   let
     mkArgs = { inputs, system, ... }: {
       pkgs-stable = import inputs.nixpkgs-stable {
-      inherit system;# 这里递归引用了外部的 system 属性
-      config.allowUnfree = true;
+        inherit system;# 这里递归引用了外部的 system 属性
+        config.allowUnfree = true;
       };
       inherit inputs;
     };
@@ -55,6 +55,7 @@
       specialArgs = mkArgs { inherit inputs system; };
       modules = [
         ./machines/apple-silicon
+        ./system
         ./hm
       ];
     };
