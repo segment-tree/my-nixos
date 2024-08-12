@@ -20,7 +20,11 @@
     
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
     
-    nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+    nixos-apple-silicon = {
+      url = "github:damien-biasotto/nixos-apple-silicon/bugfix/wifi";
+      # "github:tpwrules/nixos-apple-silicon"
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -44,6 +48,7 @@
         ./machines/nixVM
         # nur.nixosModules.nur
         # { nixpkgs.overlays = [ nur.overlay ]; }
+        ./system
         ./hm
       ];
       # { _module.args = { inherit inputs; };}
@@ -59,7 +64,19 @@
         ./hm
       ];
     };
-    
+    nixosConfigurations."garnixple" = nixpkgs.lib.nixosSystem rec {
+      system = "aarch64-linux";
+      specialArgs = mkArgs { inherit inputs system; };
+      modules = [
+        ./machines/apple-silicon
+        ./system
+        ./hm
+        ({ lib, ... }:{
+          hardware.asahi.experimentalGPUInstallMode = lib.mkForce "driver";
+          mine.machine.name = lib.mkForce "garnixple";
+        })
+      ];
+    };
     # output end
   };
   

@@ -7,7 +7,7 @@
       # ../../system
     ];
   #custom settings are here:
-  mine.machine.name = "nixple";
+  mine.machine.name = "nixVM";
   mine.machine.isVM = true;
   
   virtualisation = {
