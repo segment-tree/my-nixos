@@ -21,8 +21,8 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
     
     nixos-apple-silicon = {
-      url = "github:damien-biasotto/nixos-apple-silicon/bugfix/wifi";
-      # "github:tpwrules/nixos-apple-silicon"
+      url = "github:tpwrules/nixos-apple-silicon";
+      # "github:damien-biasotto/nixos-apple-silicon/bugfix/wifi"
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
