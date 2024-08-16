@@ -47,6 +47,8 @@
     "org/gnome/desktop/interface".scaling-factor = lib.hm.gvariant.mkUint32 2;
     "org/gnome/SessionManager".auto-save-session = true; # NOT WORK
     "org/gnome/desktop/interface".text-scaling-factor = 1.1875;
+    # DELETE: dconf reset -f  "/org/gnome/shell/extensions/gsconnect/"
+    # MODIFY: 
   };
   
   programs.bash = {

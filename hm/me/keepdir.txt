@@ -3,8 +3,15 @@
 ~/.config/mihomo
 ~/.gitconfig
 ~/.local/share/gnome-shell/extensions
-~/.mozilla
+~/.ssh
 ~/.var
+
+~/.mozilla
+~/.cache/mozilla/firefox
+
+~/.config/geary
+~/.local/share/geary
+
 ~/code
 ~/Desktop
 ~/Document
