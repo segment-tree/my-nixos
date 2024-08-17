@@ -1,5 +1,8 @@
 builds:
   exclude :
+  - nixosConfigurations.nixple
+  - nixosConfig.nixple
   - nixosConfigurations."nixple"
+  - nixosConfig."nixple"
   include :
   - nixosConfigurations.*
