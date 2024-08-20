@@ -1,4 +1,4 @@
-{ inputs, lib, config, ... }:
+{ inputs, lib, config, pkgs-stable, ... }:
 
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
@@ -9,7 +9,11 @@
   
   # home-manager.users.me = import ./me/home.nix;
   home-manager.users.me.imports = [ ./me/home.nix ];
-  home-manager.users.me._module.args = { inherit (inputs.nur); };
+  home-manager.users.me._module.args = {
+    inherit (inputs.nur);
+    inherit inputs;
+    inherit pkgs-stable;
+  };
   
   home-manager.users.gdm = lib.mkIf config.mine.machine.isVM ({ lib, ... }: {
     dconf.settings."org/gnome/desktop/interface".scaling-factor = lib.hm.gvariant.mkUint32 2;

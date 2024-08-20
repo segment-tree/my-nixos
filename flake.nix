@@ -18,11 +18,16 @@
     };
     nur.url = "github:nix-community/NUR";
     
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     
     nixos-apple-silicon = {
       url = "github:tpwrules/nixos-apple-silicon";
       # "github:damien-biasotto/nixos-apple-silicon/bugfix/wifi"
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    nixpak = {
+      url = "github:nixpak/nixpak";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

@@ -7,9 +7,10 @@
   imports = [
     ./tools/vhome.nix
     ./tools/fhs.nix
-    ./apps/bookworm.nix
+    # ./apps/bookworm.nix
     ./apps/telegram-desktop.nix
-    ./apps/qq.nix
+    # ./apps/qq.nix
+    ./apps/nixpak/base.nix
     nur.hmModules.nur
   ];
   
