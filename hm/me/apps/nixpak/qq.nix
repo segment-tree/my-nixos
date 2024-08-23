@@ -44,6 +44,10 @@
           bind.ro = [
             "/etc/machine-id"
             "/etc/localtime"
+            # [
+            #   "${pkgs.xdg-utils}/bin/xdg-open"
+            #   (sloth.concat' sloth.homeDir "/.local/bin/xdg-open")
+            # ]# seems not work at all
           ];
           network = true;
           sockets = {

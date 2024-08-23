@@ -5,13 +5,14 @@
   home.homeDirectory = "/home/me";
   
   imports = [
+    nur.hmModules.nur
     ./tools/vhome.nix
     ./tools/fhs.nix
     # ./apps/bookworm.nix
     ./apps/telegram-desktop.nix
     # ./apps/qq.nix
     ./apps/nixpak/base.nix
-    nur.hmModules.nur
+    ./apps/valent-connect.nix
   ];
   
   # 直接将当前文件夹的配置文件，链接到 Home 目录下的指定位置
@@ -40,6 +41,7 @@
   home.packages = with pkgs;[
     fortune
     just
+    gcc gdb
     # cpeditor
     # firefox-wayland
   ];
@@ -81,7 +83,7 @@
     };
   };
   
-  systemd.user.services.clash-meta = {
+  systemd.user.services.clash-meta = { # or: services.mihomo.enable
     Unit.Description = "clash vpn service";
     Install = {
       WantedBy = [ "default.target" ];

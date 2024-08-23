@@ -1,52 +1,63 @@
 { nixpakConf, pkgs, pkgs-stable, lib, osConfig, ... }:
 with nixpakConf; {
-  home.packages = lib.mkIf (!osConfig.mine.machine.isVM) [
+  home.packages = [
     (pkgs.makeDesktopItem {
-      name = "Bookworm";
-      desktopName = "Bookworm";
-      exec = "com.github.babluboy.bookworm %F";
+      name = "vscode";
+      desktopName = "vscode";
+      exec = "code %U";
       terminal = false;
-      # icon = "com.github.babluboy.bookworm";
-      icon = "${pkgs.bookworm}/share/icons/hicolor/128x128/apps/com.github.babluboy.bookworm.svg";
+      icon = "${pkgs.qq}/share/pixmaps/vscode.png";
       type = "Application";
       categories = [ "Office" ];
-      comment = "Bookworm boxed";
+      comment = "Visual Studio Code boxed";
     })
     
     (mkPak {
       config = { sloth, ... }: {
-        flatpak.appId = "com.github.babluboy.bookworm";
+        flatpak.appId = "com.visualstudio.code";
         fonts.fonts = osConfig.fonts.packages;
         dbus.policies = {
-          "org.freedesktop.portal.Documents" = "talk";
           "org.freedesktop.portal.Flatpak" = "talk";
           "org.freedesktop.portal.FileChooser" = "talk";
         };
         bubblewrap = {
           bind.rw = [
             (safebind  sloth "/share" "/.local/share")
+            (safebind  sloth "/vscode" "/.vscode")
             (safebind' sloth "/config" sloth.xdgConfigHome)
-            (sloth.concat' sloth.homeDir "/Documents")
-            "/run/opengl-driver/lib/dri/"
+            (sloth.concat' sloth.homeDir "/code")
+            "/run/user/1000/doc" ##..
           ];
           bind.ro = [
             "/etc/machine-id"
             "/etc/localtime"
             "/run/current-system/sw/"
+            # "/etc/profiles/per-user"
+            # "/etc/static/profiles/per-user/"
+            # "/etc/passwd"
+            "/etc"
+            (sloth.concat' sloth.homeDir "/.bashrc")
           ];
-          network = false;
+          sockets = {
+            x11 = true; ###
+            wayland = true;
+            pipewire = true;
+          };
           bind.dev = [
             "/dev/dri"
           ];
           tmpfs = [ "/tmp" ];
         };
 
-        imports = [ gui' ];
+        imports = [ gui' network' ];
         app = {
-          package = pkgs-stable.bookworm;
-          binPath = "com.github.babluboy.bookworm";
+          package = pkgs.vscode.fhs;
+          binPath = "code";
+          # extraEntrypoints = ["/lib/vscode/code"];
         };
       };
     }).config.script
   ];
 }
+
+

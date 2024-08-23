@@ -22,12 +22,9 @@ with nixpakConf; {
         };
         bubblewrap = {
           bind.rw = [
-            (safebind sloth "/share" "/.local/share")
-            (safebind sloth "/lyrics" "/.lyrics")
-            [
-              (sloth.mkdir (sloth.concat' sloth.appDataDir "/config"))
-              sloth.xdgConfigHome
-            ]
+            (safebind  sloth "/share" "/.local/share")
+            (safebind  sloth "/lyrics" "/.lyrics")
+            (safebind' sloth "/config" sloth.xdgConfigHome)
             (sloth.concat' sloth.homeDir "/Music")
           ];
           sockets = {

@@ -11,6 +11,10 @@ let
       (sloth.mkdir (sloth.concat' sloth.appDataDir realdir))
       (sloth.concat' sloth.homeDir mapdir)
     ];
+    safebind' = sloth: realdir: mapdir': [
+      (sloth.mkdir (sloth.concat' sloth.appDataDir realdir))
+      mapdir'
+    ];
   };
 in {
   imports = [
@@ -18,6 +22,7 @@ in {
     ./bookworm.nix
     ./gnome-2048.nix
     ./netease-cloud-music-gtk.nix
+    ./vscode.nix
   ];
   _module.args = { inherit nixpakConf; };
   home.packages = [

@@ -15,9 +15,7 @@
     
     (nixpakConf.mkPak {
       config = { sloth, ... }: {
-        flatpak = {
-          appId = "org.gnome.TwentyFortyEight";
-        };
+        flatpak.appId = "org.gnome.TwentyFortyEight";
         bubblewrap = {
           network = false;
           bind.dev = [
