@@ -8,6 +8,7 @@
   
   #boot.kernelPackages= pkgs-stable.linuxPackages_zen;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.use-xdg-base-directories = true;
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
     substituters = [

@@ -12,6 +12,8 @@
 ~/.config/geary
 ~/.local/share/geary
 
+~/.config/git
+
 ~/code
 ~/Desktop
 ~/Document

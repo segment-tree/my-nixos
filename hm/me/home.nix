@@ -46,21 +46,35 @@
     # firefox-wayland
   ];
   
+  xdg.enable = true;
+  
   dconf.settings = {
     "org/gnome/desktop/interface".scaling-factor = lib.hm.gvariant.mkUint32 2;
     "org/gnome/SessionManager".auto-save-session = true; # NOT WORK
-    "org/gnome/desktop/interface".text-scaling-factor = 1.1875;
+    "org/gnome/desktop/interface".text-scaling-factor = 1.0625;
     # DELETE: dconf reset -f  "/org/gnome/shell/extensions/gsconnect/"
-    # MODIFY: 
+    # MODIFY: gsettings set org.gnome.desktop.interface text-scaling-factor 1.1875
   };
   
   programs.bash = {
     bashrcExtra = ''
       alias hsc='_hsc(){ ghc -no-keep-hi-files -no-keep-o-files "$@";}; _hsc'
       #^ is temp
+      
+      #.gnupg
+      export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+      # gpg2 --homedir "$XDG_DATA_HOME"/gnupg
+      #.bash_history
+      mkdir -p "$XDG_STATE_HOME"/bash
+      export HISTFILE="$XDG_STATE_HOME"/bash/history
+      
+      export PYTHON_HISTORY=$XDG_STATE_HOME/python/history
+      export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python
+      export PYTHONUSERBASE=$XDG_DATA_HOME/python 
     '';
     enable = true;
     enableCompletion = true;
+    historyFile = "${config.xdg.stateHome}/bash/history";
   };
   
   programs.firefox = {

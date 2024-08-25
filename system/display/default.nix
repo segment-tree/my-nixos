@@ -77,6 +77,8 @@
           k=up
           l=right
           space=M-S-space
+          backspace=delete
+          equal=f11
         '';
       };
     };

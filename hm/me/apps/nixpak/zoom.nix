@@ -1,20 +1,21 @@
+# ZOOM NOT SUPPORT ARM LINUX
 { nixpakConf, pkgs, pkgs-stable, lib, osConfig, ... }:
 with nixpakConf; {
   home.packages = [
     (pkgs.makeDesktopItem {
-      name = "vscode";
-      desktopName = "vscode";
-      exec = "code %U";
+      name = "zoom";
+      desktopName = "zoom";
+      exec = "zoom-us %U";
       terminal = false;
-      icon = "${pkgs.vscode}/share/pixmaps/vscode.png";
+      icon = "none";#${pkgs.vscode}/share/pixmaps/vscode.png";
       type = "Application";
       categories = [ "Office" ];
-      comment = "Visual Studio Code boxed";
+      comment = "zoom meeting boxed";
     })
     
     (mkPak {
       config = { sloth, ... }: {
-        flatpak.appId = "com.visualstudio.code";
+        flatpak.appId = "com.zoom.zoom";
         fonts.fonts = osConfig.fonts.packages;
         dbus.policies = {
           "org.freedesktop.portal.Flatpak" = "talk";
@@ -23,10 +24,7 @@ with nixpakConf; {
         bubblewrap = {
           bind.rw = [
             (safebind  sloth "/share" "/.local/share")
-            (safebind  sloth "/vscode" "/.vscode")
             (safebind' sloth "/config" sloth.xdgConfigHome)
-            (sloth.concat' sloth.homeDir "/code")
-            "/run/user/1000/doc" ##..
           ];
           bind.ro = [
             "/etc/machine-id"
@@ -35,11 +33,9 @@ with nixpakConf; {
             # "/etc/profiles/per-user"
             # "/etc/static/profiles/per-user/"
             # "/etc/passwd"
-            "/etc"
-            (sloth.concat' sloth.homeDir "/.bashrc")
           ];
           sockets = {
-            x11 = true; ###
+            x11 = true;
             wayland = true;
             pipewire = true;
           };
@@ -51,9 +47,8 @@ with nixpakConf; {
 
         imports = [ gui' network' ];
         app = {
-          package = pkgs.vscode.fhs;
-          binPath = "code";
-          # extraEntrypoints = ["/lib/vscode/code"];
+          package = pkgs.zoom-us;
+          binPath = "zoom-us";
         };
       };
     }).config.script
