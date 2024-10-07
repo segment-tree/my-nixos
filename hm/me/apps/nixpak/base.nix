@@ -18,7 +18,7 @@ let
   };
 in {
   imports = [
-    ./qq.nix
+    # ./qq.nix
     ./bookworm.nix
     ./gnome-2048.nix
     ./netease-cloud-music-gtk.nix

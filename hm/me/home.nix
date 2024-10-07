@@ -39,6 +39,8 @@
 
   # 通过 home.packages 安装一些常用的软件
   home.packages = with pkgs;[
+    qq #
+    libreoffice #
     fortune
     just
     gcc gdb
