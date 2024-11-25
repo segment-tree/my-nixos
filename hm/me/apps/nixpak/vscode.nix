@@ -18,7 +18,7 @@ with nixpakConf; {
         fonts.fonts = osConfig.fonts.packages;
         dbus.policies = {
           "org.freedesktop.portal.Flatpak" = "talk";
-          "org.freedesktop.portal.FileChooser" = "talk";
+          # "org.freedesktop.portal.FileChooser" = "talk";
         };
         bubblewrap = {
           bind.rw = [

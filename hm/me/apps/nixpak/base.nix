@@ -22,7 +22,7 @@ in {
     ./bookworm.nix
     ./gnome-2048.nix
     ./netease-cloud-music-gtk.nix
-    ./vscode.nix
+    # ./vscode.nix
   ];
   _module.args = { inherit nixpakConf; };
   home.packages = [

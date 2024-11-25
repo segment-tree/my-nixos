@@ -40,6 +40,7 @@
   # 通过 home.packages 安装一些常用的软件
   home.packages = with pkgs;[
     qq #
+    vscode.fhs #
     libreoffice #
     fortune
     just

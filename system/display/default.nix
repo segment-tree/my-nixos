@@ -6,7 +6,7 @@
   i18n.inputMethod = {
     enable = true;
     type = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
+    ibus.engines = with pkgs.ibus-engines; [ rime ]; # libpinyin
     # need to configue GnomeSettings-Keyboard-Input to activate ibus
     # fcitx5.addons = with pkgs; [ fcitx5-chinese-addons fcitx5-gtk ];#  libsForQt5.fcitx5-qt 
     # fcitx5-configtool

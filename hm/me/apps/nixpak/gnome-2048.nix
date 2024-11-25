@@ -18,12 +18,16 @@
         flatpak.appId = "org.gnome.TwentyFortyEight";
         bubblewrap = {
           network = false;
+          sockets = {
+            wayland = true;
+            pipewire = true;
+          };
           bind.dev = [
             "/dev/dri"
           ];
           tmpfs = [ "/tmp" ];
         };
-
+	
         imports = [ ./gui-base.nix ];
         app = {
           package = pkgs.gnome-2048;
