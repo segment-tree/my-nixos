@@ -54,7 +54,7 @@
   dconf.settings = {
     "org/gnome/desktop/interface".scaling-factor = lib.hm.gvariant.mkUint32 2;
     "org/gnome/SessionManager".auto-save-session = true; # NOT WORK
-    "org/gnome/desktop/interface".text-scaling-factor = 1.0625;
+    "org/gnome/desktop/interface".text-scaling-factor = 1.03125; # 1.0625;
     # DELETE: dconf reset -f  "/org/gnome/shell/extensions/gsconnect/"
     # MODIFY: gsettings set org.gnome.desktop.interface text-scaling-factor 1.1875
   };

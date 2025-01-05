@@ -30,7 +30,14 @@
     device = "/var/lib/swapfile";
     size = 12*1024;
   } ];
-  zramSwap.enable = true;
+  boot.kernelParams = [
+    "zswap.enabled=1"
+    "zswap.compressor=zstd"
+    "zswap.zpool=zsmalloc"
+    "zswap.max_pool_percent=50"
+  ];
+  # zramSwap.enable = true;
+  # see https://github.com/tpwrules/nixos-apple-silicon/issues/253  https://www.reddit.com/r/AsahiLinux/comments/1gy0t86/psa_transitioning_from_zramswap_to_zswap/
   
   services.keyd.keyboards.default = {
     extraConfig = ''

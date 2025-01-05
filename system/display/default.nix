@@ -25,6 +25,14 @@
             sarasa-gothic
             wqy_microhei
             wqy_zenhei
+            # foundertypeFonts.combine (
+            #   font:
+            #   (lib.attrByPath [
+            #     "meta"
+            #     "license"
+            #     "shortName"
+            #   ] "unknown" font) == "foundertype-per-ula"
+            # )
         ];
   };
   console = {
@@ -51,7 +59,7 @@
 
   # Enable sound.
   # sound.enable = true;
-  hardware.pulseaudio.enable = lib.mkDefault true;
+  hardware.pulseaudio.enable = lib.mkDefault false;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;

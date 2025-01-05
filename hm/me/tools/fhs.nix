@@ -13,6 +13,8 @@
         (base.targetPkgs pkgs) ++ ( with pkgs; [
           pkg-config
           ncurses
+          webkitgtk
+          libpng
           #fuse
           # 如果你的 FHS 程序还有其他依赖，把它们添加在这里
         ])

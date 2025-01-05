@@ -30,6 +30,7 @@
       url = "github:nixpak/nixpak";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # chinese-fonts-overlay.url = "github:brsvh/chinese-fonts-overlays/main";
   };
   
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -52,7 +53,7 @@
       modules = [
         ./machines/nixVM
         # nur.nixosModules.nur
-        # { nixpkgs.overlays = [ nur.overlay ]; }
+        # { nixpkgs.overlays = [ inputs.chinese-fonts-overlay.overlays.default ]; }
         ./system
         ./hm
       ];
@@ -67,6 +68,7 @@
         ./machines/apple-silicon
         ./system
         ./hm
+        # ({ pkgs,... }:{ nixpkgs.overlays = [ inputs.chinese-fonts-overlay.overlays.default ]; })
       ];
     };
     nixosConfigurations."garnixple" = nixpkgs.lib.nixosSystem rec {
