@@ -5,7 +5,8 @@
   home.homeDirectory = "/home/me";
   
   imports = [
-    nur.hmModules.nur
+    # nur.hmModules.nur
+    nur.modules.homeManager.default
     ./tools/vhome.nix
     ./tools/fhs.nix
     # ./apps/bookworm.nix
@@ -91,12 +92,13 @@
         "mousewheel.default.delta_multiplier_y" = 36;
         "mousewheel.default.delta_multiplier_x" = 80;
       };
-      extensions = with config.nur.repos.rycee.firefox-addons;[
-        ublock-origin
-        tampermonkey
-        single-file
-        zoom-page-we
-      ];
+      # extensions = with pkgs.nur.repos.rycee.firefox-addons;[
+      #   ublock-origin
+      #   tampermonkey
+      #   single-file
+      #   zoom-page-we
+      # ];
+      #! https://github.com/Cyber-Syntax/dot-files/blob/cc8fd877fe27f8b000d4ff09f70faadcc4a61c84/Documents/nixos/flake.nix
     };
   };
   

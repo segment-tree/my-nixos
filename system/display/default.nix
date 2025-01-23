@@ -20,7 +20,7 @@
         packages = with pkgs; [
             noto-fonts
             source-han-sans
-            noto-fonts-cjk
+            noto-fonts-cjk-sans
             noto-fonts-emoji
             sarasa-gothic
             wqy_microhei
@@ -59,7 +59,7 @@
 
   # Enable sound.
   # sound.enable = true;
-  hardware.pulseaudio.enable = lib.mkDefault false;
+  # hardware.pulseaudio.enable = lib.mkDefault false;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
