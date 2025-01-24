@@ -65,13 +65,14 @@
       system = "aarch64-linux";
       specialArgs = mkArgs { inherit inputs system; };
       modules = [
+        inputs.nur.modules.nixos.default
         ./machines/apple-silicon
         ./system
         ./hm
         # ({ pkgs,... }:{ nixpkgs.overlays = [ inputs.chinese-fonts-overlay.overlays.default ]; })
       ];
     };
-    nixosConfigurations."garnixple" = nixpkgs.lib.nixosSystem rec {
+    nixosConfigurations."garnixple" = nixpkgs.lib.nixosSystem rec {# almost Abandoned beacause experimentalGPUInstallMode Abandened
       system = "aarch64-linux";
       specialArgs = mkArgs { inherit inputs system; };
       modules = [
