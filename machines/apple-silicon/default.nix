@@ -12,6 +12,9 @@
   mine.machine.name = "nixple";
   
   boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
+  ### cross compile
+  boot.binfmt.emulatedSystems = [ "x86_64-linux" "i386-linux" ];
+  
   hardware.asahi = {
     setupAsahiSound = true;
     peripheralFirmwareDirectory = ./firmware;

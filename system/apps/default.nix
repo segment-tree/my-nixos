@@ -4,6 +4,7 @@
   imports = [
     ./gnome-network-displays.nix
     ./IOS.nix
+    ./podman.nix
   ];
   environment.systemPackages = with pkgs; [
     libheif # view heic files

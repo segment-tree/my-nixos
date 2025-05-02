@@ -44,7 +44,7 @@
     libreoffice #
     fortune
     just
-    gcc gdb
+    gcc gdb clang
     # cpeditor
     # firefox-wayland
   ];

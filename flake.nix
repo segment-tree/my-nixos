@@ -69,7 +69,6 @@
         ./machines/apple-silicon
         ./system
         ./hm
-        # ({ pkgs,... }:{ nixpkgs.overlays = [ inputs.chinese-fonts-overlay.overlays.default ]; })
       ];
     };
     nixosConfigurations."garnixple" = nixpkgs.lib.nixosSystem rec {# almost Abandoned beacause experimentalGPUInstallMode Abandened
