@@ -44,7 +44,7 @@
     libreoffice #
     fortune
     just
-    gcc gdb clang
+    gcc gdb # clang
     # cpeditor
     # firefox-wayland
   ];
@@ -91,7 +91,7 @@
         "mousewheel.default.delta_multiplier_y" = 36;
         "mousewheel.default.delta_multiplier_x" = 80;
       };
-      extensions = with pkgs.nur.repos.rycee.firefox-addons;[
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons;[
         ublock-origin
         tampermonkey
         single-file
