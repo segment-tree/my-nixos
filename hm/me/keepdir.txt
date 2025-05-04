@@ -1,7 +1,6 @@
 ~/.config/dconf
 ~/.config/gtk-3.0
 ~/.config/mihomo
-~/.gitconfig
 ~/.local/share/gnome-shell/extensions
 ~/.ssh
 ~/.var

@@ -3,7 +3,6 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      #./apple-silicon-support
       inputs.nixos-apple-silicon.nixosModules.apple-silicon-support
       ./hardware-configuration.nix
       # ../../system
@@ -22,7 +21,6 @@
     useExperimentalGPUDriver = true;
   };
   hardware.graphics.enable = true;
-  hardware.graphics.package = lib.mkForce pkgs.mesa-asahi-edge.drivers;###
   
   swapDevices = [ {
     device = "/var/lib/swapfile";

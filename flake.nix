@@ -31,6 +31,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # chinese-fonts-overlay.url = "github:brsvh/chinese-fonts-overlays/main";
+    
+    niri.url = "github:sodiboo/niri-flake";
   };
   
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -53,7 +55,6 @@
       modules = [
         ./machines/nixVM
         # nur.nixosModules.nur
-        # { nixpkgs.overlays = [ inputs.chinese-fonts-overlay.overlays.default ]; }
         ./system
         ./hm
       ];

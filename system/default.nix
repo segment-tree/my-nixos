@@ -20,6 +20,7 @@
     packages = with pkgs; [
       firefox-wayland
       tree
+      gcc gdb
     ];
   };
 
