@@ -5,5 +5,6 @@
   # $homeMgr/tools/asahi-tools.nix for single user.
   environment.systemPackages = with pkgs; [
     asahi-btsync
+    muvm
   ];
 }
