@@ -1,4 +1,4 @@
-{ config, pkgs, lib, nur, ... }:
+{ config, pkgs, lib, nur, pkgs-stable, ... }:
 
 {
   home.username = "me";
@@ -34,7 +34,6 @@
 
   # 通过 home.packages 安装一些常用的软件
   home.packages = with pkgs;[
-    qq #
     vscode.fhs #
     libreoffice #
     fortune
@@ -42,7 +41,7 @@
     clang
     # cpeditor
     # firefox-wayland
-  ];
+  ] ++ [ pkgs-stable.qq ];
   
   xdg.enable = true;
   

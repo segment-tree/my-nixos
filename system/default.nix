@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
 
-{ config, pkgs, pkgs-stable, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -11,6 +11,7 @@
     ./network
     ./apps
     ./options.nix
+    inputs.nur.modules.nixos.default
   ];
   
   # Define a user account. Don't forget to set a password with ‘passwd’.

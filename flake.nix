@@ -54,7 +54,6 @@
       specialArgs = mkArgs { inherit inputs system; };
       modules = [
         ./machines/nixVM
-        # nur.nixosModules.nur
         ./system
         ./hm
       ];
@@ -66,7 +65,6 @@
       system = "aarch64-linux";
       specialArgs = mkArgs { inherit inputs system; };
       modules = [
-        inputs.nur.modules.nixos.default
         ./machines/apple-silicon
         ./system
         ./hm
