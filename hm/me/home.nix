@@ -35,7 +35,7 @@
 
   # 通过 home.packages 安装一些常用的软件
   home.packages = with pkgs;[
-    vscode.fhs #
+    vscode.fhs # code --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
     libreoffice #
     fortune
     just
@@ -68,7 +68,9 @@
       
       export PYTHON_HISTORY=$XDG_STATE_HOME/python/history
       export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python
-      export PYTHONUSERBASE=$XDG_DATA_HOME/python 
+      export PYTHONUSERBASE=$XDG_DATA_HOME/python
+      
+      export QT_QPA_PLATFORM=wayland
     '';
     enable = true;
     enableCompletion = true;

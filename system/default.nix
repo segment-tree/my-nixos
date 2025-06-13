@@ -34,6 +34,18 @@
   # nixpkgs.config.firefox.enableGnomeExtensions = true; # not well
   services.gnome.gnome-browser-connector.enable = true;
   #####
+  
+  services.printing.enable = true;
+
+  hardware.printers.ensurePrinters = [
+    {
+      name = "Panasonic_KX-MB2138CN";
+      description = "Panasonic KX-MB2138CN";
+      location = "SIST 1B-203";
+      model = "everywhere";
+      deviceUri = "ipp://10.11.12.13:631/printers/Panasonic_KX-MB2138CN";
+    }
+  ];
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
