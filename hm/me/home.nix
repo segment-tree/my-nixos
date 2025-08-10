@@ -12,7 +12,7 @@
     # ./apps/bookworm.nix
     ./apps/telegram-desktop.nix
     # ./apps/qq.nix
-    ./apps/nixpak/base.nix
+    #! ./apps/nixpak/base.nix
     ./apps/valent-connect.nix
     ./apps/niri
     ./apps/rime

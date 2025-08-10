@@ -70,6 +70,15 @@
         ./hm
       ];
     };
+    nixosConfigurations."9700X" = nixpkgs.lib.nixosSystem rec {
+      system = "x86_64-linux";
+      specialArgs = mkArgs { inherit inputs system; };
+      modules = [
+        ./machines/9700X
+        ./system
+        ./hm
+      ];
+    };
     nixosConfigurations."garnixple" = nixpkgs.lib.nixosSystem rec {# almost Abandoned beacause experimentalGPUInstallMode Abandened
       system = "aarch64-linux";
       specialArgs = mkArgs { inherit inputs system; };
