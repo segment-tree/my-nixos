@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports = [
@@ -11,19 +11,30 @@
     ./network
     ./apps
     ./options.nix
+    # ./users
     inputs.nur.modules.nixos.default
   ];
   
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.me = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      firefox-wayland
-      tree
-      gcc gdb
-    ];
+  users.users = {
+    me = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      packages = with pkgs; [
+        firefox-wayland
+        tree
+        gcc gdb
+      ];
+    };
+  } // lib.optionalAttrs config.mine.machine.gaming-user.enable {
+    gaming = {
+      isNormalUser = true;
+      extraGroups = [];
+      packages = with pkgs; [];
+    };
   };
+  
+  programs.steam.enable = config.mine.machine.gaming-user.enable;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

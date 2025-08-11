@@ -11,6 +11,10 @@
       type = types.bool;
       default = false;
     };
+    mine.machine.gaming-user.enable = mkOption {
+      type = types.bool;
+      default = false;
+    };
   };
 }
 

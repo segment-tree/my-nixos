@@ -19,5 +19,6 @@
     htop
     clash-meta
     gcc gdb
+    btop
   ];
 }
