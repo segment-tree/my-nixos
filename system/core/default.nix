@@ -4,7 +4,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.systemd-boot.configurationLimit = 20;
   
   #boot.kernelPackages= pkgs-stable.linuxPackages_zen;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
