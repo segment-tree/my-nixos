@@ -13,7 +13,7 @@
   services.keyd.keyboards.default = {
     extraConfig = ''
       [main]
-      meta=layer(leftalt)
+      meta=layer(alt)
       leftalt=layer(meta)
     '';
   };
