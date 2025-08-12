@@ -1,4 +1,4 @@
-{ config, pkgs, lib, nur, pkgs-stable, ... }:
+{ config, pkgs, lib, nur, pkgs-stable, osConfig, ... }:
 
 {
   home.username = "me";
@@ -16,8 +16,7 @@
     ./apps/valent-connect.nix
     ./apps/niri
     ./apps/rime
-    ./tools/disable-steam.nix
-  ];
+  ] ++ (lib.optionals osConfig.mine.machine.gaming-user.enable [./tools/disable-steam.nix]);
   
   # 直接将当前文件夹的配置文件，链接到 Home 目录下的指定位置
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
@@ -37,6 +36,9 @@
   # 通过 home.packages 安装一些常用的软件
   home.packages = with pkgs;[
     vscode.fhs # code --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
+    (pkgs.writeShellScriptBin "code-wayland" ''
+      code --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
+    '')
     libreoffice #
     fortune
     just

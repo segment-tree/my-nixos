@@ -16,24 +16,21 @@
   ];
   
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = {
-    me = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-      packages = with pkgs; [
-        firefox-wayland
-        tree
-        gcc gdb
-      ];
-    };
-  } // lib.optionalAttrs config.mine.machine.gaming-user.enable {
-    gaming = {
-      isNormalUser = true;
-      extraGroups = [];
-      packages = with pkgs; [];
-    };
+  users.users.me = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [
+      firefox-wayland
+      tree
+      gcc gdb
+    ];
   };
-  
+
+  users.users.gaming = lib.mkIf config.mine.machine.gaming-user.enable {
+    isNormalUser = true;
+    extraGroups = [];
+    packages = with pkgs; [];
+  };
   programs.steam.enable = config.mine.machine.gaming-user.enable;
 
   # List packages installed in system profile. To search, run:

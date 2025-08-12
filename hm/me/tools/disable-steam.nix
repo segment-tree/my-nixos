@@ -10,5 +10,8 @@
    (pkgs.writeShellScriptBin "steam" ''
      echo "steam is disabled for current user"
    '')
+   (pkgs.writeShellScriptBin "steam-run" ''
+     echo "steam is disabled for current user"
+   '')
  ];
 }
