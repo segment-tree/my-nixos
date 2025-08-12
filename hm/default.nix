@@ -10,14 +10,9 @@
   # home-manager.users.me = import ./me/home.nix;
   
   home-manager.users = {
-    me.imports = [ ./me/home.nix ];
-    me._module.args = {
-      inherit (inputs.nur);
-      inherit inputs;
-      inherit pkgs-stable;
-    };
+    me = import ./me/home.nix;
   } // lib.optionalAttrs config.mine.machine.gaming-user.enable {
-    gaming.imports = [ ./gaming/home.nix ];
+    gaming = import ./gaming/home.nix;
   }
   
   // { gdm = lib.mkIf config.mine.machine.isVM ({ lib, ... }: {
@@ -28,6 +23,10 @@
   
   # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home.nix 的参数
   # 取消注释下面这一行，就可以在 home.nix 中使用 flake 的所有 inputs 参数了
-  home-manager.extraSpecialArgs = inputs;
+  home-manager.extraSpecialArgs = {
+    inherit (inputs.nur);
+    inherit inputs;
+    inherit pkgs-stable;
+  };
 }
 # See https://discourse.nixos.org/t/how-to-move-home-manager-definition-into-a-separate-file/28034/2
