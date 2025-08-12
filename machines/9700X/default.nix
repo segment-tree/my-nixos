@@ -9,4 +9,12 @@
   #custom settings are here:
   mine.machine.name = "9700X";
   mine.machine.gaming-user.enable = true;
+  
+  services.keyd.keyboards.default = {
+    extraConfig = ''
+      [main]
+      meta=layer(leftalt)
+      leftalt=layer(meta)
+    '';
+  };
 }
