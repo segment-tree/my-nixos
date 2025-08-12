@@ -17,4 +17,6 @@
       leftalt=layer(meta)
     '';
   };
+  zramSwap.enable = true;
+  zramSwap.algorithm = "zstd";
 }
