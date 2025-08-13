@@ -19,6 +19,7 @@
     nur.url = "github:nix-community/NUR";
     
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-3e3afe51.url = "github:nixos/nixpkgs/3e3afe5174c561dee0df6f2c2b2236990146329f"; # for mesa 25.1.2
     
     nixos-apple-silicon = {
       url = "github:tpwrules/nixos-apple-silicon";
@@ -39,6 +40,10 @@
   let
     mkArgs = { inputs, system, ... }: {
       pkgs-stable = import inputs.nixpkgs-stable {
+        inherit system;# 这里递归引用了外部的 system 属性
+        config.allowUnfree = true;
+      };
+      pkgs-3e3afe51 = import inputs.nixpkgs-3e3afe51 {
         inherit system;# 这里递归引用了外部的 system 属性
         config.allowUnfree = true;
       };

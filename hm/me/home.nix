@@ -36,7 +36,7 @@
   # 通过 home.packages 安装一些常用的软件
   home.packages = with pkgs;[
     vscode.fhs # code --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
-    (pkgs.writeShellScriptBin "code-wayland" ''
+    (pkgs.writeShellScriptBin "code-way" ''
       code --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
     '')
     libreoffice #
@@ -45,7 +45,11 @@
     clang
     # cpeditor
     # firefox-wayland
-  ] ++ [ pkgs-stable.qq ];
+    qq
+    (pkgs.writeShellScriptBin "qq-way" ''
+      qq --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
+    '')
+  ];
   
   xdg.enable = true;
   
