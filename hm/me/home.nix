@@ -45,10 +45,10 @@
     clang
     # cpeditor
     # firefox-wayland
-    qq
-    (pkgs.writeShellScriptBin "qq-way" ''
-      qq --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
-    '')
+    (qq.override {
+      commandLineArgs =
+        "--ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3";
+    })
   ];
   
   xdg.enable = true;
