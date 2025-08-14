@@ -277,6 +277,8 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
+// starts waybar
+// spawn-at-startup "waybar"
 // spawn-at-startup "alacritty" "-e" "fish"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -359,7 +361,7 @@ binds {
     // `niri msg action do-something`.
 
     // Mod-Esc show overview
-    Mod+Slash { toggle-overview; }
+    Mod+Slash repeat=false { toggle-overview; }
 
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
@@ -367,6 +369,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T { spawn "kgx"; } // alacritty
+    Mod+Shift+T { spawn "alacritty"; }
     Mod+S { spawn "env" "XDG_CURRENT_DESKTOP=GNOME" "gnome-control-center"; } 
     Mod+D { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock"; }
@@ -382,7 +385,7 @@ binds {
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
-    Mod+Q { close-window; }
+    Mod+Q repeat=false { close-window; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }

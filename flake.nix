@@ -34,6 +34,7 @@
     # chinese-fonts-overlay.url = "github:brsvh/chinese-fonts-overlays/main";
     
     niri.url = "github:sodiboo/niri-flake";
+    # niri-session-manager.url = "github:MTeaHead/niri-session-manager";
   };
   
   outputs = { self, nixpkgs, home-manager, ... }@inputs:

@@ -36,6 +36,7 @@
             #     "shortName"
             #   ] "unknown" font) == "foundertype-per-ula"
             # )
+            font-awesome # 小字体图标
         ];
   };
   console = {
