@@ -33,7 +33,7 @@
     },
     "memory": {
         "interval": 1,
-        "format": " {used}G",
+        "format": " {used:.2f}G",
         "tooltip": false
     },
     "network": {
@@ -50,7 +50,7 @@
         "format": "{icon} {volume}%",
         "format-muted": "",
         "format-bluetooth": "{icon} {volume}%",
-        "format-bluetooth-muted": " {icon}",
+        "format-bluetooth-muted": "  {icon}  ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
