@@ -17,7 +17,7 @@
   hardware.asahi = {
     setupAsahiSound = true;
     peripheralFirmwareDirectory = ./firmware;
-    withRust = true;
+    # withRust = true;
     useExperimentalGPUDriver = true;
   };
   hardware.graphics.enable = true;

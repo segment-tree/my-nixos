@@ -11,6 +11,7 @@
     ./network
     ./apps
     ./options.nix
+    ./hotfix.nix
     # ./users
     inputs.nur.modules.nixos.default
   ];

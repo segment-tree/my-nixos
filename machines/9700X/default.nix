@@ -25,8 +25,4 @@
   nixpkgs.overlays = [
     (final: prev: { mesa = pkgs-3e3afe51.mesa; })
   ];
-  #temp: !
-  nixpkgs.config.permittedInsecurePackages = [
-    "libsoup-2.74.3"
-  ];
 }

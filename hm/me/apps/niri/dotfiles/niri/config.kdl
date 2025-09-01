@@ -132,6 +132,9 @@ output "HDMI-A-3" {
     mode "3840x2160@60"
     scale 2.125
 }
+output "HDMI-A-5" {
+    scale 2.125
+}
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:

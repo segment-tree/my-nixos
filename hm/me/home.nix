@@ -37,8 +37,12 @@
   home.packages = with pkgs;[
     vscode.fhs # code --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
     (pkgs.writeShellScriptBin "code-way" ''
-      code --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
+      code --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3 $@
     '')
+    # (vscode.fhs.override {
+    #   commandLineArgs =
+    #     "--ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3";
+    # })
     libreoffice #
     fortune
     just
@@ -49,6 +53,7 @@
       commandLineArgs =
         "--ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3";
     })
+    elan
   ];
   
   xdg.enable = true;
