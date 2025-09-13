@@ -2,7 +2,9 @@
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: "Fira Mono";
     font-weight: 500;
-    font-size: 18px;
+    /*font-size: 18px;*/
+    /* note: "height" in config is 32 in 4k TV*/
+    font-size: 15px;
 
     border-radius: 10px;
     text-shadow: none;

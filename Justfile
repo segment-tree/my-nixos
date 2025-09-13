@@ -10,16 +10,16 @@ a:
   #aaa
 
 deploy:
-  nixos-rebuild switch --flake . --use-remote-sudo
+  nixos-rebuild switch --flake . --sudo
 
 Deploy:
-  nixos-rebuild switch --flake . --use-remote-sudo --impure
+  nixos-rebuild switch --flake . --sudo --impure
 
 debug:
-  nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose
+  nixos-rebuild switch --flake . --sudo --show-trace --verbose
 
 Debug:
-  nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose --impure
+  nixos-rebuild switch --flake . --sudo --show-trace --verbose --impure
 
 
 up:

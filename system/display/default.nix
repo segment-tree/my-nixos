@@ -88,10 +88,13 @@
           j=down
           k=up
           l=right
-          space=M-S-space
+          space=b
+          9=home
+          0=end
           backspace=delete
           equal=f11
-        '';
+        ''; # space=M-S-space
+        # note space=b fix key-b for 9700X
       };
     };
   };

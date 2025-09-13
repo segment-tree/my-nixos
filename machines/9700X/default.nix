@@ -23,6 +23,6 @@
   boot.kernelPackages= pkgs.linuxPackages_zen;
   #temp:
   nixpkgs.overlays = [
-    (final: prev: { mesa = pkgs-3e3afe51.mesa; })
+    # (final: prev: { mesa = pkgs-3e3afe51.mesa; })
   ];
 }

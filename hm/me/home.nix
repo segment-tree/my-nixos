@@ -108,6 +108,11 @@
       ];
     };
   };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
   
   systemd.user.services.clash-meta = { # or: services.mihomo.enable
     Unit.Description = "clash vpn service";

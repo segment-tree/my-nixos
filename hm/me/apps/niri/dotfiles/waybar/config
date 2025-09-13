@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top", 
-    "height": 32, 
+    "height": 23, 
     "spacing": 6,
     "modules-left": ["custom/tty", "wlr/workspaces", "niri/window"],
     "modules-center": [],

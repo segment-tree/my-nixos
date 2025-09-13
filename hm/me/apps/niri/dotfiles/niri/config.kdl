@@ -129,8 +129,8 @@ output "eDP-1" {
 }
 
 output "HDMI-A-3" {
-    mode "3840x2160@60"
-    scale 2.125
+    mode "2560x1440@74.968"
+    scale 1.875
 }
 output "HDMI-A-5" {
     scale 2.125
