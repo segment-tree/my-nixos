@@ -54,6 +54,7 @@
         "--ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3";
     })
     elan
+    util-linux
   ];
   
   xdg.enable = true;
@@ -113,7 +114,7 @@
     enable = true;
     nix-direnv.enable = true;
   };
-  
+
   systemd.user.services.clash-meta = { # or: services.mihomo.enable
     Unit.Description = "clash vpn service";
     Install = {
