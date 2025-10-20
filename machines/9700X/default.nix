@@ -9,6 +9,7 @@
   #custom settings are here:
   mine.machine.name = "9700X";
   mine.machine.gaming-user.enable = true;
+  mine.machine.asServer.enable = true;
   
   services.keyd.keyboards.default = {
     extraConfig = ''
@@ -23,6 +24,6 @@
   boot.kernelPackages= pkgs.linuxPackages_zen;
   #temp:
   nixpkgs.overlays = [
-    (final: prev: { mesa = pkgs-3e3afe51.mesa; })
+    # (final: prev: { mesa = pkgs-3e3afe51.mesa; })
   ];
 }

@@ -10,7 +10,7 @@
     ./ssh.nix
   ];
 
-  programs.nix-ld.enable = true; # warning
+  # programs.nix-ld.enable = true; # warning
 
   environment.systemPackages = with pkgs; [
     libheif # view heic files

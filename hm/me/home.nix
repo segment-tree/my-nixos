@@ -16,6 +16,7 @@
     ./apps/valent-connect.nix
     ./apps/niri
     ./apps/rime
+    ./apps/vscode-ssh.nix
   ] ++ (lib.optionals osConfig.mine.machine.gaming-user.enable [./tools/disable-steam.nix]);
   
   # 直接将当前文件夹的配置文件，链接到 Home 目录下的指定位置

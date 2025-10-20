@@ -25,6 +25,7 @@
       tree
       gcc gdb
     ];
+    linger = true; # main user, and includes necessary systemd services clash-meta
   };
 
   users.users.gaming = lib.mkIf config.mine.machine.gaming-user.enable {
@@ -33,6 +34,13 @@
     packages = with pkgs; [];
   };
   programs.steam.enable = config.mine.machine.gaming-user.enable;
+
+  users.users.server = lib.mkIf config.mine.machine.asServer.enable {
+    isNormalUser = true;
+    extraGroups = [];
+    packages = with pkgs; [];
+    linger = true;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

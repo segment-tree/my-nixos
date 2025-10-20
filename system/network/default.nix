@@ -34,5 +34,19 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = false;
+  # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 8080 ];
+  };
+  /*
+  networking.firewall.extraCommands = ''
+    # 限制每个 IP 对 8080 的最大连接数为 3
+    iptables -A INPUT -p tcp --dport 8080 -m connlimit --connlimit-above 3 -j REJECT
+  '';
+
+  networking.firewall.extraStopCommands = ''
+    # 清理规则
+    iptables -D INPUT -p tcp --dport 8080 -m connlimit --connlimit-above 3 -j REJECT || true
+  '';*/
 }

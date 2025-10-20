@@ -11,6 +11,7 @@
   
   home-manager.users.me = import ./me/home.nix;
   home-manager.users.gaming = lib.mkIf config.mine.machine.gaming-user.enable (import ./gaming/home.nix);
+  home-manager.users.server = lib.mkIf config.mine.machine.asServer.enable (import ./server/home.nix);
   home-manager.users.gdm = lib.mkIf config.mine.machine.isVM ({ lib, ... }: {
     dconf.settings."org/gnome/desktop/interface".scaling-factor = lib.hm.gvariant.mkUint32 2;
     home.stateVersion = "23.05";

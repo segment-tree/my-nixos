@@ -35,6 +35,9 @@
     
     niri.url = "github:sodiboo/niri-flake";
     # niri-session-manager.url = "github:MTeaHead/niri-session-manager";
+
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    vscode-server.inputs.nixpkgs.follows = "nixpkgs";
   };
   
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
