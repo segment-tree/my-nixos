@@ -28,6 +28,7 @@
             sarasa-gothic
             wqy_microhei
             wqy_zenhei
+            libertine
             # foundertypeFonts.combine (
             #   font:
             #   (lib.attrByPath [

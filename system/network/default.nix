@@ -36,9 +36,12 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
   networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 22 8080 ];
+    # enable = true;
+    # allowedTCPPorts = [ 22 8080 ];
+    enable = false;
   };
+
+  services.tailscale.enable = true;
   /*
   networking.firewall.extraCommands = ''
     # 限制每个 IP 对 8080 的最大连接数为 3

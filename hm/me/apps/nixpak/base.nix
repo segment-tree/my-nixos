@@ -19,7 +19,7 @@ let
 in {
   imports = [
     # ./qq.nix
-    ./bookworm.nix
+    # ./bookworm.nix
     ./gnome-2048.nix
     ./netease-cloud-music-gtk.nix
     # ./vscode.nix

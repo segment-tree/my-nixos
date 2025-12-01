@@ -132,6 +132,9 @@ output "HDMI-A-3" {
     mode "2560x1440@74.968"
     scale 1.875
 }
+output "DP-4" {
+    scale 1.625
+}
 output "HDMI-A-5" {
     scale 2.125
 }

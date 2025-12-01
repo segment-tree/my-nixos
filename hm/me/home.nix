@@ -56,6 +56,7 @@
     })
     elan
     util-linux
+    localsend
   ];
   
   xdg.enable = true;
