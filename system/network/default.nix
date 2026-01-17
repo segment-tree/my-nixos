@@ -1,13 +1,7 @@
-{ config, pkgs, pkgs-stable, ... }:
+{ config, pkgs, pkgs-stable, lib, ... }:
 
 {
   networking.hostName = config.mine.machine.name; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.wireless.iwd = {  # Enables wireless support via wpa_supplicant.
-    enable = true;
-    settings.General.EnableNetworkConfiguration = true;
-  };
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.

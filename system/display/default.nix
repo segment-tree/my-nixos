@@ -24,7 +24,7 @@
             noto-fonts
             source-han-sans
             noto-fonts-cjk-sans
-            noto-fonts-emoji
+            noto-fonts-color-emoji
             sarasa-gothic
             wqy_microhei
             wqy_zenhei
@@ -89,15 +89,23 @@
           j=down
           k=up
           l=right
-          space=b
+          2=b
           9=home
           0=end
           backspace=delete
           equal=f11
+          a = command(/run/current-system/sw/bin/ydotool mousemove -- -20 0)
+          d = timeout(250, d) | command(/run/current-system/sw/bin/ydotool mousemove 20 0)
+          w = timeout(250, w) | command(/run/current-system/sw/bin/ydotool mousemove 0 -- -20)
+          s = command(/run/current-system/sw/bin/ydotool mousemove 0 20)
+          enter = command(/run/current-system/sw/bin/ydotool click 0x1)
+          space = command(/run/current-system/sw/bin/ydotool click 0x2)
+          1 =  command(/run/current-system/sw/bin/touch /tmp/kkkkey)
         ''; # space=M-S-space
         # note space=b fix key-b for 9700X
       };
     };
   };
   
+  programs.ydotool.enable = true;
 }

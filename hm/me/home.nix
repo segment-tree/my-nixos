@@ -34,6 +34,12 @@
   #   userEmail = "xiaoyin_c@qq.com";
   # };
 
+  home.sessionVariables = {
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    NIXOS_OZONE_WL = "1";
+    QT_QPA_PLATFORM = "wayland";
+  };
+
   # 通过 home.packages 安装一些常用的软件
   home.packages = with pkgs;[
     vscode.fhs # code --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
@@ -50,13 +56,17 @@
     clang
     # cpeditor
     # firefox-wayland
+    /*
     (qq.override {
       commandLineArgs =
         "--ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3";
-    })
+    })*/
+    qq
     elan
     util-linux
     localsend
+
+    file-roller # after some versions, gnome remove file-roller for default installation
   ];
   
   xdg.enable = true;
@@ -68,7 +78,7 @@
     # DELETE: dconf reset -f  "/org/gnome/shell/extensions/gsconnect/"
     # MODIFY: gsettings set org.gnome.desktop.interface text-scaling-factor 1.1875
   };
-  
+
   programs.bash = {
     bashrcExtra = ''
       alias hsc='_hsc(){ ghc -no-keep-hi-files -no-keep-o-files "$@";}; _hsc'
@@ -84,8 +94,6 @@
       export PYTHON_HISTORY=$XDG_STATE_HOME/python/history
       export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python
       export PYTHONUSERBASE=$XDG_DATA_HOME/python
-      
-      export QT_QPA_PLATFORM=wayland
     '';
     enable = true;
     enableCompletion = true;
@@ -125,6 +133,17 @@
     };
     Service = {
       ExecStart = "${pkgs.clash-meta}/bin/clash-meta";
+    };
+  };
+
+  systemd.user.services.ydotoold = {
+    Unit.Description = "ydotoold";
+    Install = {
+      WantedBy = [ "default.target" ];
+      After = [ ];
+    };
+    Service = {
+      ExecStart = "${pkgs.ydotool}/bin/ydotoold";
     };
   };
 

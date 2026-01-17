@@ -5,10 +5,11 @@
   home.homeDirectory = "/home/gaming";
   
   imports = [
+    ../me/tools/fhs.nix
   ];
  
   home.packages = with pkgs;[
-    firefox-wayland
+    firefox
     # steam
     # wine
     # proton
