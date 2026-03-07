@@ -121,6 +121,23 @@
         "type": "github"
       }
     },
+    "my-rime-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732819340,
+        "narHash": "sha256-glqB3z7tiSb+mLHzxLLYyrqphRFHhEMnvbGQQw2rd1s=",
+        "owner": "iDvel",
+        "repo": "rime-ice",
+        "rev": "6871a0eaf9ca9feba70fc8dba74ecb308ad4b1c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "iDvel",
+        "ref": "2024.11.29",
+        "repo": "rime-ice",
+        "type": "github"
+      }
+    },
     "niri": {
       "inputs": {
         "niri-stable": "niri-stable",
@@ -338,6 +355,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "my-rime-config": "my-rime-config",
         "niri": "niri",
         "nixos-apple-silicon": "nixos-apple-silicon",
         "nixpak": "nixpak",

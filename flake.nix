@@ -38,6 +38,11 @@
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     vscode-server.inputs.nixpkgs.follows = "nixpkgs";
+
+    my-rime-config = {
+      url = "github:iDvel/rime-ice/2024.11.29";
+      flake = false; # 说明这只是个纯仓库，不是一个 flake
+    };
   };
   
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
