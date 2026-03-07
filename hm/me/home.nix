@@ -54,6 +54,7 @@
     fortune
     just
     clang
+    gnumake
     # cpeditor
     # firefox-wayland
     /*
@@ -61,12 +62,19 @@
       commandLineArgs =
         "--ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3";
     })*/
-    qq
+    # qq
     elan
     util-linux
+    libnotify
+    net-tools pciutils usbutils
     localsend
 
     file-roller # after some versions, gnome remove file-roller for default installation
+
+    distrobox
+    
+    kubectl
+    kubernetes-helm
   ];
   
   xdg.enable = true;
@@ -136,7 +144,7 @@
     };
   };
 
-  systemd.user.services.ydotoold = {
+  systemd.user.services.ydotoold = lib.optionals osConfig.mine.machine.asServer.enable {
     Unit.Description = "ydotoold";
     Install = {
       WantedBy = [ "default.target" ];

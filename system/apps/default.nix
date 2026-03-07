@@ -8,6 +8,7 @@
     ./asahi-tools.nix
     ./niri.nix
     ./ssh.nix
+    ./sunshine.nix
   ];
 
   # programs.nix-ld.enable = true; # warning

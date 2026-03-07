@@ -10,9 +10,27 @@
   home.packages = with pkgs; [
     waybar
     swaylock
+    mako
   ];
+
   home.file.".config/niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/hm/me/apps/niri/dotfiles/niri/config.kdl;
-  home.file.".config/xdg-desktop-portal/niri-portals.conf".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/hm/me/apps/niri/dotfiles/xdg-desktop-portal/niri-portals.conf;
+  # home.file.".config/xdg-desktop-portal/niri-portals.conf".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/hm/me/apps/niri/dotfiles/xdg-desktop-portal/niri-portals.conf;
   home.file.".config/waybar/config".source =  config.lib.file.mkOutOfStoreSymlink /etc/nixos/hm/me/apps/niri/dotfiles/waybar/config;
   home.file.".config/waybar/style.css".source =  config.lib.file.mkOutOfStoreSymlink /etc/nixos/hm/me/apps/niri/dotfiles/waybar/style.css;
+  
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ 
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config = {
+      common = {
+        default = [ "gnome" "gtk" ];
+      };
+      niri = {
+        default = [ "gnome" "gtk" ];
+      };
+    };
+  };
 }

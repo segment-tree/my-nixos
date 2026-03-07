@@ -5,7 +5,7 @@
     (pkgs.makeDesktopItem {
       name = "qq";
       desktopName = "QQ";
-      exec = "qq %U";
+      exec = "b %U";
       terminal = false;
       # icon = "qq";
       icon = "${pkgs.qq}/share/icons/hicolor/512x512/apps/qq.png";
@@ -38,7 +38,8 @@
               (sloth.mkdir (sloth.concat [ sloth.appDataDir "/QQ" ]))
               (sloth.concat [ sloth.xdgConfigHome "/QQ" ])
             ]
-            (sloth.mkdir (sloth.concat [ sloth.xdgDownloadDir "/QQ" ]))
+            # (sloth.mkdir (sloth.concat [ sloth.xdgDownloadDir "/QQ" ]))
+            (sloth.mkdir sloth.xdgDownloadDir)
             "/run/opengl-driver/lib/dri/"
           ];
           bind.ro = [
@@ -51,7 +52,7 @@
           ];
           network = true;
           sockets = {
-            x11 = true;
+            x11 = false; # we use wayland, no x11 socket
             wayland = true;
             pipewire = true;
           };
@@ -63,6 +64,7 @@
           tmpfs = [ "/tmp" ];
           env = {
             IBUS_USE_PORTAL = "1";
+            XAUTHORITY = "1"; # pretend have this env to cheat the app.
           };
         
         };

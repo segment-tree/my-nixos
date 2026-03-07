@@ -21,6 +21,9 @@
   zramSwap.enable = true;
   zramSwap.algorithm = "zstd";
 
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+
   boot.kernelPackages= pkgs.linuxPackages_zen;
   #temp:
   nixpkgs.overlays = [
