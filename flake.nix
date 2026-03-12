@@ -33,7 +33,7 @@
     };
     # chinese-fonts-overlay.url = "github:brsvh/chinese-fonts-overlays/main";
     
-    niri.url = "github:sodiboo/niri-flake";
+    niri.url = "github:sodiboo/niri-flake"; # abandoned
     # niri-session-manager.url = "github:MTeaHead/niri-session-manager";
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";

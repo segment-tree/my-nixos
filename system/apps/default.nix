@@ -19,7 +19,8 @@
     git # flake
     wget
     trash-cli
-    neofetch
+    # neofetch
+    fastfetch
     openssh
     htop
     clash-meta

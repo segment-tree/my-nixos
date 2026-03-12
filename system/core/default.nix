@@ -12,7 +12,8 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
     substituters = [
-      # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
       "https://cache.garnix.io"
       "https://ceon.cachix.org"
