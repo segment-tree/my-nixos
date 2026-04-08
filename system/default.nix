@@ -16,8 +16,12 @@
     inputs.nur.modules.nixos.default
   ];
   
+  programs.fish.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.me = {
+    shell = pkgs.fish;
+    # Capability Reminder:
+    # for vscode-server, the client needs to modify remote.SSH.useLocalServer to false in settings.json.
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [

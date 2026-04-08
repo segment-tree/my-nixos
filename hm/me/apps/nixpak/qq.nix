@@ -40,6 +40,7 @@
             ]
             # (sloth.mkdir (sloth.concat [ sloth.xdgDownloadDir "/QQ" ]))
             (sloth.mkdir sloth.xdgDownloadDir)
+            # (sloth.concat' (sloth.env "XDG_RUNTIME_DIR") "/at-spi")
             "/run/opengl-driver/lib/dri/"
           ];
           bind.ro = [
@@ -65,6 +66,12 @@
           env = {
             IBUS_USE_PORTAL = "1";
             XAUTHORITY = "1"; # pretend have this env to cheat the app.
+            NO_AT_BRIDGE = "1"; # some fix
+            LD_LIBRARY_PATH = lib.makeLibraryPath [ # some fix
+              pkgs.libx11
+              pkgs.libxcb
+              pkgs.krb5
+            ];
           };
         
         };

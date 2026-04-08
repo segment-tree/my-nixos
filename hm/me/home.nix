@@ -38,11 +38,13 @@
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORM = "wayland";
+    _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
   # 通过 home.packages 安装一些常用的软件
   home.packages = with pkgs;[
-    vscode.fhs # code --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
+    # vscode.fhs
+    vscode
     (pkgs.writeShellScriptBin "code-way" ''
       code --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3 $@
     '')
@@ -87,25 +89,42 @@
     # MODIFY: gsettings set org.gnome.desktop.interface text-scaling-factor 1.1875
   };
 
+  home.sessionVariables = {
+    GNUPGHOME = "${config.xdg.dataHome}/gnupg";
+    
+    PYTHON_HISTORY = "${config.xdg.stateHome}/python/history";
+    PYTHONPYCACHEPREFIX = "${config.xdg.cacheHome}/python";
+    PYTHONUSERBASE = "${config.xdg.dataHome}/python";
+
+    CARGO_HOME = "${config.xdg.dataHome}/cargo";
+    CGDB_DIR = "${config.xdg.configHome}/cgdb";
+
+    GOPATH = "${config.xdg.dataHome}/go";
+    GOMODCACHE = "${config.xdg.cacheHome}/go/mod";
+  };
+
+  home.activation = {
+    createCustomDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      mkdir -p "${config.xdg.stateHome}/bash"
+      mkdir -p "${config.xdg.dataHome}/gnupg"
+    '';
+  };
+
   programs.bash = {
     bashrcExtra = ''
       alias hsc='_hsc(){ ghc -no-keep-hi-files -no-keep-o-files "$@";}; _hsc'
       #^ is temp
-      
-      #.gnupg
-      export GNUPGHOME="$XDG_DATA_HOME"/gnupg
-      # gpg2 --homedir "$XDG_DATA_HOME"/gnupg
-      #.bash_history
-      mkdir -p "$XDG_STATE_HOME"/bash
-      export HISTFILE="$XDG_STATE_HOME"/bash/history
-      
-      export PYTHON_HISTORY=$XDG_STATE_HOME/python/history
-      export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python
-      export PYTHONUSERBASE=$XDG_DATA_HOME/python
     '';
     enable = true;
     enableCompletion = true;
     historyFile = "${config.xdg.stateHome}/bash/history";
+  };
+  
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set -g fish_prompt_pwd_dir_length 0
+    '';
   };
   
   programs.firefox = {
