@@ -164,7 +164,7 @@
     };
   };
 
-  systemd.user.services.ydotoold = lib.optionals osConfig.mine.machine.asServer.enable {
+  systemd.user.services.ydotoold = lib.mkIf osConfig.mine.machine.asServer.enable {
     Unit.Description = "ydotoold";
     Install = {
       WantedBy = [ "default.target" ];
