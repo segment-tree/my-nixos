@@ -34,11 +34,11 @@
   #   userEmail = "xiaoyin_c@qq.com";
   # };
 
-  home.sessionVariables = {
+  home.sessionVariables = { # about wayland & niri
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORM = "wayland";
-    _JAVA_AWT_WM_NONREPARENTING = "1";
+    _JAVA_AWT_WM_NONREPARENTING = lib.mkForce "1"; # don't know if it would affect gnome.
   };
 
   # 通过 home.packages 安装一些常用的软件
@@ -89,7 +89,7 @@
     # MODIFY: gsettings set org.gnome.desktop.interface text-scaling-factor 1.1875
   };
 
-  home.sessionVariables = {
+  home.sessionVariables = { # about xdg dirs
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
     
     PYTHON_HISTORY = "${config.xdg.stateHome}/python/history";
