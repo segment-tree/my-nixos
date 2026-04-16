@@ -14,7 +14,7 @@
     vmware.guest.enable = true;
     vmware.guest.headless = true;#
     waydroid.enable = true;
-    lxd.enable = true;
+    # lxd.enable = true;
   };
   
   services.keyd.keyboards.default = {

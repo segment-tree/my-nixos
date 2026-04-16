@@ -23,7 +23,7 @@
     # Capability Reminder:
     # for vscode-server, the client needs to modify remote.SSH.useLocalServer to false in settings.json.
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "plugdev" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       tree

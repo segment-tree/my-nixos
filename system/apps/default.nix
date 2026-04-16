@@ -29,4 +29,8 @@
     util-linux
     net-tools
   ];
+
+  services.udev.packages = with pkgs; [
+    probe-rs-tools stlink
+  ];
 }

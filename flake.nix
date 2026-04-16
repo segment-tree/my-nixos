@@ -59,7 +59,7 @@
       inherit inputs;
     };
   in {
-    nixosConfigurations."nixVM" = nixpkgs.lib.nixosSystem rec {
+    nixosConfigurations."nixVM" = nixpkgs.lib.nixosSystem rec { # almost abandoned.
     # hostname 为 nixos 的主机会使用这个配置
     # 这里使用了 nixpkgs.lib.nixosSystem 函数来构建配置，
     # 后面的 attributes set 是它的参数，在 nixos 系统上使用如下命令即可部署此配置：
@@ -91,19 +91,6 @@
         ./machines/9700X
         ./system
         ./hm
-      ];
-    };
-    nixosConfigurations."garnixple" = nixpkgs.lib.nixosSystem rec {# almost Abandoned beacause experimentalGPUInstallMode Abandened
-      system = "aarch64-linux";
-      specialArgs = mkArgs { inherit inputs system; };
-      modules = [
-        ./machines/apple-silicon
-        ./system
-        ./hm
-        ({ lib, ... }:{
-          hardware.asahi.experimentalGPUInstallMode = lib.mkForce "driver";
-          mine.machine.name = lib.mkForce "garnixple";
-        })
       ];
     };
     # output end

@@ -78,6 +78,8 @@
     
     kubectl
     kubernetes-helm
+
+    tmux
   ];
   
   xdg.enable = true;

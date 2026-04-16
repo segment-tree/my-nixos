@@ -106,7 +106,7 @@ output "eDP-1" {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "2560x1600@60.000"
+    mode "2560x1440@74.968"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1.875
@@ -132,7 +132,7 @@ output "HDMI-A-3" {
     mode "2560x1440@74.968"
     scale 1.875
 }
-output "DP-4" {
+output "PNP(ZWM) iPlaoe             " {
     scale 1.625
 }
 output "HDMI-A-5" {
@@ -483,8 +483,8 @@ binds {
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
     // ...
 
-    // Mod+Shift+Page_Down { move-workspace-down; }
-    // Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
     Mod+Shift+U         { move-workspace-down; }
     Mod+Shift+I         { move-workspace-up; }
 
