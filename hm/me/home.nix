@@ -18,6 +18,7 @@
     ./apps/rime
     ./apps/vscode-ssh.nix
     ./apps/ai-tools.nix
+    ./tools/xdg-dir-set.nix
   ] ++ (lib.optionals osConfig.mine.machine.gaming-user.enable [./tools/disable-steam.nix]);
   
   # 直接将当前文件夹的配置文件，链接到 Home 目录下的指定位置
@@ -80,6 +81,8 @@
     kubernetes-helm
 
     tmux
+
+    codex
   ];
   
   xdg.enable = true;
@@ -90,27 +93,6 @@
     "org/gnome/desktop/interface".text-scaling-factor = 1.03125; # 1.0625;
     # DELETE: dconf reset -f  "/org/gnome/shell/extensions/gsconnect/"
     # MODIFY: gsettings set org.gnome.desktop.interface text-scaling-factor 1.1875
-  };
-
-  home.sessionVariables = { # about xdg dirs
-    GNUPGHOME = "${config.xdg.dataHome}/gnupg";
-    
-    PYTHON_HISTORY = "${config.xdg.stateHome}/python/history";
-    PYTHONPYCACHEPREFIX = "${config.xdg.cacheHome}/python";
-    PYTHONUSERBASE = "${config.xdg.dataHome}/python";
-
-    CARGO_HOME = "${config.xdg.dataHome}/cargo";
-    CGDB_DIR = "${config.xdg.configHome}/cgdb";
-
-    GOPATH = "${config.xdg.dataHome}/go";
-    GOMODCACHE = "${config.xdg.cacheHome}/go/mod";
-  };
-
-  home.activation = {
-    createCustomDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      mkdir -p "${config.xdg.stateHome}/bash"
-      mkdir -p "${config.xdg.dataHome}/gnupg"
-    '';
   };
 
   programs.bash = {
@@ -148,6 +130,8 @@
         zoom-page-we
       ];
     };
+    
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
   };
 
   programs.direnv = {

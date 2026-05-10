@@ -43,6 +43,8 @@
       url = "github:iDvel/rime-ice/2024.11.29";
       flake = false; # 说明这只是个纯仓库，不是一个 flake
     };
+
+    daeuniverse.url = "github:daeuniverse/flake.nix";
   };
   
   outputs = { self, nixpkgs, home-manager, ... }@inputs:

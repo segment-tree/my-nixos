@@ -9,6 +9,7 @@
     ./niri.nix
     ./ssh.nix
     ./sunshine.nix
+    ./dae.nix
   ];
 
   # programs.nix-ld.enable = true; # warning
@@ -28,6 +29,7 @@
     btop
     util-linux
     net-tools
+    mission-center
   ];
 
   services.udev.packages = with pkgs; [
