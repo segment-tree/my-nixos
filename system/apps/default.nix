@@ -9,7 +9,8 @@
     ./niri.nix
     ./ssh.nix
     ./sunshine.nix
-    ./dae.nix
+    # ./dae.nix
+    ./clash-verge.nix
   ];
 
   # programs.nix-ld.enable = true; # warning

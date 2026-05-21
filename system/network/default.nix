@@ -8,7 +8,7 @@
   time.timeZone = "Asia/Shanghai";
 
   # Configure network proxy if necessary
-  networking.proxy.default = "http://127.0.0.1:7890/";
+  # networking.proxy.default = "http://127.0.0.1:7890/";
   networking.proxy.noProxy = "127.0.0.1,localhost,172.16.236.1,internal.domain,mirrors.tuna.tsinghua.edu.cn";
 
   # Some programs need SUID wrappers, can be configured further or are

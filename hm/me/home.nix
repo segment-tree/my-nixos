@@ -139,6 +139,7 @@
     nix-direnv.enable = true;
   };
 
+  /*
   systemd.user.services.clash-meta = { # or: services.mihomo.enable
     Unit.Description = "clash vpn service";
     Install = {
@@ -148,7 +149,7 @@
     Service = {
       ExecStart = "${pkgs.clash-meta}/bin/clash-meta";
     };
-  };
+  };*/
 
   systemd.user.services.ydotoold = lib.mkIf osConfig.mine.machine.asServer.enable {
     Unit.Description = "ydotoold";

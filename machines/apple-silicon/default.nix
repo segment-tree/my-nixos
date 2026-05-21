@@ -42,4 +42,8 @@
       leftcontrol=layer(fn)
     '';
   };
+
+  environment.systemPackages = with pkgs; [
+    moonlight-qt
+  ];
 }

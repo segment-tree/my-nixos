@@ -16,6 +16,8 @@
     inputs.nur.modules.nixos.default
   ];
   
+  # users.groups.plugdev = {}; # don't know if needed.
+
   programs.fish.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.me = {
