@@ -5,7 +5,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # ../../system
-      ../../system/apps/usbip.client.nix # temp
+      ./longan-nano-usbip.nix # temp
     ];
   #custom settings are here:
   mine.machine.name = "9700X";
@@ -68,10 +68,4 @@
   networking.networkmanager.dns = "none";
 
   # ip route replace throw 10.0.0.0/8 table 52
-
-  # USB permissions for Sipeed Longan Nano (GD32 DFU bootloader)
-  services.udev.extraRules = ''
-    SUBSYSTEM=="usb", ATTR{idVendor}=="28e9", ATTR{idProduct}=="0189", MODE="0666"
-  '';
-
 }

@@ -18,7 +18,9 @@
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" ];
     serviceConfig = {
-      ExecStart = "${config.boot.kernelPackages.usbip}/bin/usbipd -D";
+      Type = "forking";
+      PIDFile = "/run/usbipd.pid";
+      ExecStart = "${config.boot.kernelPackages.usbip}/bin/usbipd -D -P /run/usbipd.pid";
       Restart = "on-failure";
     };
   };

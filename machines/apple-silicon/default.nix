@@ -6,6 +6,7 @@
       inputs.nixos-apple-silicon.nixosModules.apple-silicon-support
       ./hardware-configuration.nix
       # ../../system
+      ./longan-nano-usbip.nix # temp
     ];
   #custom settings are here:
   mine.machine.name = "nixple";
