@@ -1,4 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, osConfig, lib, ... }:
+lib.mkIf (osConfig.mine.machine.softwares.uncommonSoftware.InstallLevel >= 8)
 {
   services.kdeconnect = {
     enable = true;

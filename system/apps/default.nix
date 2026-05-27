@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./gnome-network-displays.nix
+    # ./gnome-network-displays.nix
     ./IOS.nix
     ./podman.nix
     ./asahi-tools.nix
@@ -25,12 +25,17 @@
     fastfetch
     openssh
     htop
-    clash-meta
+    # clash-meta
     gcc gdb
+
     btop
     util-linux
-    net-tools
+    libnotify localsend
+    net-tools pciutils usbutils
+
     mission-center
+
+    waypipe
   ];
 
   services.udev.packages = with pkgs; [

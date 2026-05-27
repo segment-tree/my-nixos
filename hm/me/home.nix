@@ -54,8 +54,6 @@
     #   commandLineArgs =
     #     "--ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3";
     # })
-    libreoffice #
-    fortune
     just
     clang
     gnumake
@@ -67,23 +65,18 @@
         "--ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3";
     })*/
     # qq
-    elan
-    util-linux
-    libnotify
-    net-tools pciutils usbutils
-    localsend
 
     file-roller # after some versions, gnome remove file-roller for default installation
 
+  ] ++ (lib.optionals (osConfig.mine.machine.softwares.uncommonSoftware.InstallLevel >= 8) [
+    libreoffice
+    fortune
+    tmux elan
     distrobox
-    
+
     kubectl
     kubernetes-helm
-
-    tmux
-
-    codex
-  ];
+  ]);
   
   xdg.enable = true;
   

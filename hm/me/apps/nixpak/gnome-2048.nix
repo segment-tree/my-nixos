@@ -1,6 +1,6 @@
 { nixpakConf, pkgs, pkgs-stable, lib, osConfig, ... }:
-{
-  home.packages = lib.mkIf (!osConfig.mine.machine.isVM) [
+lib.mkIf (osConfig.mine.machine.softwares.uncommonSoftware.InstallLevel >= 8) {
+  home.packages = [
     (pkgs.makeDesktopItem {
       name = "gnome-2048";
       desktopName = "gnome-2048";

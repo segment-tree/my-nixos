@@ -10,6 +10,8 @@
     ];
   #custom settings are here:
   mine.machine.name = "nixple";
+  mine.machine.isAsahi = true;
+  mine.machine.softwares.uncommonSoftware.InstallLevel = 4; # macbook do not have enough storage.
   
   boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
   ### cross compile
